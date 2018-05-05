@@ -33,9 +33,6 @@ body {
 	transition: all .17s ease;
 }
 
-.letter:hover {
-	border: 2px solid purple;
-}
 
 .playing {
 	color: white;
