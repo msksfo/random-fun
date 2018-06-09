@@ -1,0 +1,554 @@
+/* ================================================================ */
+/*                       Global Styles                              */
+/*==================================================================*/
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+h2 {
+    font-weight: 500;
+    text-align: center;
+}
+
+:root {
+    --dark-gray: #333;
+    --flower-yellow:  #FBD135;
+    --green: #118752;
+    --not-white: #f7f7f7;
+}
+
+body {
+    font-size: 1rem;
+    color: var(--dark-gray);
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ================================================================ */
+/*                       Header Section                             */
+/*==================================================================*/
+
+header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background: linear-gradient(#ffffff, #fefcfd);
+    background: linear-gradient(#ffffff, #ebecef);
+
+    background: white;
+    height: 108px;
+    display: grid;
+    grid-template-columns: repeat(2, min-content);
+   
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+
+    border-bottom: 1px solid #f2cda7;
+}
+
+.logo {
+    font-size: 2rem;
+}
+
+.logo-link {
+    color: var(--dark-gray);
+}
+
+.logo-link:hover, .logo-link:focus {
+    color: var(--green);
+}
+
+
+/* ===== Mobile Menu Icon ===== */
+.mobile-icon {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    width: 35px;
+    border-top: 6px solid var(--dark-gray);
+    border-bottom: 6px solid var(--dark-gray);
+}
+
+.middle {
+   width: 35px;
+   height: 6px;
+   background-color: var(--dark-gray);
+}
+
+
+/* ====== Full Width Navigation ===== */
+.full-width-nav {
+   display: none;
+}
+
+.nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+
+.nav-link {
+    color: var(--dark-gray);
+    font-size: 1.3rem;
+    padding: 8px 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    transition: all .3s ease;
+    border-bottom: 2px solid white;
+}
+
+
+.nav-link:hover, .navlink:focus {
+    border-radius: 2px;
+    background-color var(--flower-yellow);
+
+    border-bottom: 2px solid var(--flower-yellow);
+}
+
+
+
+/* =====================  ==== Hero Image ======================== */
+
+.hero-image {
+    background-image: url('../assets/images/hero3.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(100vh - 108px);
+    background-attachment: scroll;
+}
+
+
+/* ================================================================ */
+/*                        About Section                             */
+/*==================================================================*/
+
+.about {
+    padding: 3rem 1rem;
+    background-color: var(--not-white);
+}
+
+.section-header {
+   font-size: 1.8rem;
+}
+
+.about-content {
+    background-color: white;
+    display: grid;
+    grid-gap: 1rem;
+    padding: 1rem;
+    border: 2px solid var(--green);
+}
+
+.profile-figure {
+    margin: 0;
+    max-width: 100%;
+}
+
+.profile-pic {
+    max-width: 100%;
+}
+
+.signature {
+    font-family: cursive;
+    font-size: 1.2rem;
+    letter-spacing: 1.1px;
+}
+
+.about-text {
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+
+/* ================================================================ */
+/*                       Plants Section                             */
+/*==================================================================*/
+
+.plants {
+    padding: 3rem 1rem;
+}
+
+.plant-border, .flower-border {
+    height: 150px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.plant, .flower {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ==== quote ===== */
+.quote-wrapper {
+    padding: 3rem 0;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+}
+
+.quote {
+    grid-column: 2;
+    text-align: center;
+}
+
+.quote-author {
+    margin-top: .5rem;
+    font-size: 1.3rem;
+    font-family: cursive;
+}
+
+.quote-text {
+    font-size: 1.8rem;
+    font-family: cursive;
+    letter-spacing: 1.2px;
+}
+
+/* the grid of plant types/descriptions */
+.plants-content {
+    display: grid;
+    margin-bottom: calc(3rem + 20px);
+}
+
+.plant-text {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+/* create a gradient as bottom border */
+.plant-text:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    padding-top: .2rem;
+    margin-top: 3rem;
+    background: linear-gradient(to right, #fff, var(--flower-yellow) 50%, #fff 100%);
+}
+
+.no-pseudo-elem:after {
+    content: none;
+}
+
+
+/* ================================================================ */
+/*                       Gifts Section                              */
+/*==================================================================*/
+
+.gifts {
+    padding: 3rem 1rem;
+}
+
+.gifts-content {
+    display: grid;
+    grid-gap: 1rem;
+}
+
+.gifts-figure {
+    margin: 0;
+    max-width: 100%;
+}
+
+.gifts-img {
+    max-width: 100%;
+}
+
+.gifts-text {
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+
+/* ================================================================ */
+/*                  Fruits & Vegetables Section                     */
+/*==================================================================*/
+
+.food {
+    background-color: var(--not-white);
+    padding: 3rem 1rem;
+}
+
+.food-content {
+    display: grid;
+    grid-gap: 1rem;
+}
+
+.food-figure {
+    margin: 0;
+    max-width: 100%;
+}
+
+.food-img {
+    max-width: 100%;
+}
+
+.food-text {
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+.section-list {
+    border 1px solid pink;
+    list-style: inside;
+    padding: 0;
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+
+/* ================================================================ */
+/*                       Contact Section                            */
+/*==================================================================*/
+
+.contact {
+    padding: 3rem 1rem 0 1rem;;
+}
+
+.contact-content {
+    background-image: url('../assets/images/greenhouse.jpg');
+    background-repeat: norepeat;
+    background-size: cover;
+}
+
+
+.method-wrapper {
+    background: rgba(0, 0, 0, .7);
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.icon-wrapper {
+    margin-right: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid purple;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.icon {
+    font-size: 2.5rem;
+    color: purple;
+}
+
+.info {
+    font-size: 1.1rem;
+    color: white;
+    letter-spacing: 1.2px;
+
+
+}
+
+/* ======= the map ======= */
+
+.map-outer-wrapper {
+    background: rgba(0, 0, 0, .7);
+    padding: 2rem 1rem 100px 1rem;;
+}
+
+.find {
+    padding: 15px 0 30px 0;
+    margin: 0 auto;
+    color: white;
+    text-align: center;
+    width: 140px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 300; 
+    border-top: 1px solid white;
+    letter-spacing: 1.5px;
+}
+.map-inner-wrapper {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contact-map {
+    position: relative;
+    height: 0;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+}
+
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+
+/* ================================================================ */
+/*                             Footer                               */
+/*==================================================================*/
+
+footer {
+   padding: 1rem;
+   border-bottom: 1px solid var(--flower-yellow);
+}
+
+footer p {
+    text-align: center;
+    margin: 0;
+}
+
+.tangoecho {
+    color: var(--dark-gray);
+    transition: color: .3s ease;
+}
+
+.tangoecho:hover, .tangoecho:focus {
+    color: purple;
+}
+
+
+/* ================================================================ */
+/*                        Media Queries                             */
+/*==================================================================*/
+
+@media screen and (min-width: 600px){
+    .contact-info {
+        display: flex;
+    }
+
+    .method-wrapper {
+        flex: 1;
+        flex-direction: column;
+    }
+
+    .icon-wrapper {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+}
+
+
+
+@media screen and (min-width: 768px){
+    /* ==== header/navigation ==== */
+    header {
+        display: flex;
+    }
+
+    .mobile-icon {
+        display: none;
+    }
+
+    .full-width-nav {
+        display: block;
+    }
+
+    .hero-image {
+        background-attachment: fixed;
+    }
+
+
+    /* ==== about ==== */
+    .about-content, .gifts-content {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .signature {
+        text-align: center;
+    }
+
+    /* === plants ==== */
+    .plants-content {
+        grid-template-columns repeat(auto-fit, minmax(400px, 1fr));
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1rem;
+    }
+
+    .plant-text:after {
+        content: none;
+    }
+
+    .plant-text {
+        margin: 0;
+        padding: 0 1rem;
+    }
+
+    .bottom {
+        border-bottom: 1px solid var(--flower-yellow);
+    }
+
+    .right {
+        border-right: 1px solid var(--flower-yellow);
+    }
+    
+    .left {
+        border-left: 1px solid var(--flower-yellow);
+    }
+    
+    .top {
+        border-top: 1px solid var(--flower-yellow);
+    }
+    
+
+
+    /* ====== food section ===== */
+    .food-content {
+        grid-template-columns: 1fr 1fr 1fr;
+        border-left: 1px solid var(--green);
+        padding-left: 1rem;
+    }
+
+    /* eleminate top margin on first paragraph in text-containers */
+    .no-top-margin {
+        margin-top: 0;
+    }
+
+    .about-text, .gifts-text{
+        padding: 0 2rem;
+        text-align: center;
+    }
+
+    .list-container {
+       display: grid;
+       grid-template-columns: 1fr auto 1fr;
+    }
+
+    .section-list {
+        grid-column: 2;
+    }
+
+    /* ==== gifts ==== */
+    .gifts-text-container {
+        display: grid;
+        align-items: center;
+    }
+
+    .gifts-text {
+        width: 60%;
+        margin: 0 auto;
+       border-top: 1px solid #6AAA5D;
+       border-bottom: 1px solid #6AAA5D;
+        padding: 30px 2rem;
+    }
+
+    
+}
