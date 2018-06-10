@@ -9,25 +9,29 @@
         <link rel='stylesheet' href='css/landing.css'>
     </head>
     <body>
-        <div class='container'>
+      <div class='outermost-container'>
+            <div class='container'>
+                
+                <video autoplay loop muted>
+                    <source src="assets/video/daisy.mp4" type='video/mp4'>
+                    <p>Your browser does not support HTML5 video</p>
+                </video>
+        
+                <div class='overlay'>
+                    <div class='overlay-content'>
+                        <h1>Welcome to Bloomfield Greenhouse</h1>
+                        <div class='landing-options'>
+                            <a href='index.html' class='button no-border' >Enter</a>
+                            <a class='button no-border' aria-label='217.652.0112' href='tel:2176520112'>Call</a>
+                            <a href='https://www.google.com/maps/place/16350+Old+Rte+54,+New+Berlin,+Illinois+62670/' target='_blank' class='button'>Find Us</a>
+                        </div> <!-- close .landing-options -->
+                    </div> <!-- close .overlay-content -->
+                </div> <!-- close .overlay -->
+                
+            </div> <!-- close .container -->
             
-            <video autoplay loop muted>
-                <source src="assets/video/daisy.mp4">
-                <p>Your browser does not support HTML5 video</p>
-            </video>
-       
-            <div class='overlay'>
-                <div class='overlay-content'>
-                    <h1>Welcome to Bloomfield Greenhouse</h1>
-                    <div class='landing-options'>
-                        <a href='index.html' class='button no-border' >Enter</a>
-                        <a class='button no-border' aria-label='217.652.0112' href='tel:2176520112'>Call</a>
-                        <a href='https://www.google.com/maps/place/16350+Old+Rte+54,+New+Berlin,+Illinois+62670/' target='_blank' class='button'>Find Us</a>
-                    </div> <!-- close .landing-options -->
-                </div> <!-- close .overlay-content -->
-            </div> <!-- close .overlay -->
-            
-        </div> <!-- close .container -->
+      </div>
+     
         
     </body>
 </html>
