@@ -118,8 +118,6 @@ header {
 
 .nav-link:hover, .navlink:focus {
     border-radius: 2px;
-    background-color var(--flower-yellow);
-
     border-bottom: 2px solid var(--flower-yellow);
 }
 

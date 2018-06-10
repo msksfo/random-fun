@@ -7,8 +7,9 @@ body {
     font-size: 1rem;
     line-height: 1.5;
     letter-spacing: 1.2px;
-
     color: #333;
+    max-width: 1280px;
+    margin: 0 auto;
 }
 
 
