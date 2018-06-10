@@ -13,7 +13,7 @@ body {
 
 .wrapper {
     position: relative;
-    max-width: 1280px;
+    max-width: 1578px;
     margin: 0 auto;
     height: 100vh;
 }
@@ -27,8 +27,6 @@ body {
     height:  100%;
     overflow: hidden;
 }
-
-
 
 
 .overlay {
