@@ -13,8 +13,8 @@ body {
 
 .wrapper {
     position: relative;
-    max-width: 1578px;
-    margin: auto;
+    max-width: 1280px;
+    margin: 0 auto;
     height: 100vh;
 }
 
@@ -48,9 +48,6 @@ video {
     z-index: 1;
 }
 
-.overlay-content {
-    z-index: 2;
-}
 
 h1 {
     margin: 1rem 0;
