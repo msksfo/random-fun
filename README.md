@@ -3,4 +3,4 @@
 ### Project links
 https://msksfo.github.io/random-fun/teriBday/index.html
 
-https://msksfo.github.io/random-fun/BloomfieldGreenhouse/landing2.html
+https://msksfo.github.io/random-fun/BloomfieldGreenhouse/landing.html

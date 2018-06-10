@@ -4,23 +4,22 @@
 
 
 body {
+    margin: 0;
     font-size: 1rem;
     line-height: 1.5;
-    letter-spacing: 1.2px;
     color: #333;
+    overflow: hidden;
+}
+
+.wrapper {
+    position: relative;
     max-width: 1280px;
     margin: 0 auto;
-}
-
-.outermost-container {
-    max-width: 1000px;
-    margin: 0 auto;
     height: 100vh;
-    border: 1px solid blue;
 }
 
 
-.container {
+.video-container {
     position: absolute;
     top: 0;
     left: 0;
@@ -62,13 +61,6 @@ a.button {
     padding: 12px;
     transition: all .3s ease;
     text-transform: uppercase;
-    border-top: 1px solid rgba(255, 255, 255, .5);
-    border-right: 1px solid rgba(255, 255, 255, .5);
-
-    border-top: 3px double rgba(255, 255, 255, 1);
-    border-right: 3px double rgba(255, 255, 255, 1);
-    border-bottom: 3px double white;
-
     border: 3px double white;
 }
 
@@ -121,7 +113,7 @@ video {
 
 @media screen and (max-width: 767px){
     /* disable the video for mobile devices */
-    .container {
+    .video-container {
         background-image: url('../assets/images/daisy.png');
         background-position: center;
         background-repeat: no-repeat;
