@@ -5,4 +5,4 @@ https://msksfo.github.io/random-fun/teriBday/index.html
 
 https://msksfo.github.io/random-fun/BloomfieldGreenhouse/landing.html
 
-https://msksfo.github.io/random-fun/alex2018.index.html
+https://msksfo.github.io/random-fun/alex2018/index.html
