@@ -1,0 +1,585 @@
+
+body {
+    box-sizing: border-box;  
+    color: var(--black);
+    line-height: 1.6;
+}
+
+
+:root {
+    --black: #333;
+    --blue: #135FB0;
+    --orangeSubmit: #F86920;
+    --mintGreen: #82C6AF;
+    --lightGray: #eee;
+}
+
+
+.date {
+    color: #ccc;
+    transition: color .3s ease;
+}
+
+
+.date:hover {
+    color: var(--blue);
+}
+
+
+.greeting {
+    text-align: center;
+}
+
+
+.nasaImage-wrapper {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.nasa-image {
+    display: block;
+    max-width: 100%;
+}
+
+
+/******** ACTIVITY CHOICES DIV ********/
+.activity-choices {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 10px;
+    background-color: var(--lightGray);
+    font-size: 1.1rem;
+}
+
+
+.activity-choices-prompt {  
+    font-size: inherit;
+}
+
+
+.activitySelect-form {
+    /* TODO:  using display:grid here made the input overflow. why????? */
+
+    display: flex;
+    flex-direction: column;
+}
+ 
+
+.activity-select {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+
+.activity-choice-submit {
+    border: 1px solid white;
+    background-color: var(--orangeSubmit);
+    letter-spacing: .4px;
+    text-transform: uppercase;
+    font-size: 1rem;
+    padding: 5px 8px;
+    transition: color .3s ease;
+    border-radius: 3px;
+
+    /* TODO: having display: grid on the form is causing this input to overflow its parent (the form) */
+   
+}
+
+
+.activity-choice-submit:hover {
+    color: var(--orangeSubmit);
+    background-color: #fdd8c5;
+}
+
+
+/******** LANGUAGE TRANSLATION SECTION ********/
+.language-translation {
+    display: none;
+    border-top: 3px double var(--blue);
+    flex-direction: column;
+    padding: 2rem 10px;
+    background: var(--mintGreen); /* fallback for old browsers */
+    font-size: 1.1rem;
+    background: linear-gradient(to bottom right, #43c6ac, #191654);
+}
+
+
+.language-choices-prompt {
+    background-color: #fff;
+    padding: 5px 10px;
+    margin-top: 30px;
+    display: grid;
+    grid-gap: 8px;
+    align-items: center;
+}
+
+
+.text-to-be-translated {
+    padding: 5px 10px;
+    border: 1px solid #d4ebe3;
+    background-color: #ebf6f2;
+    font-size: 12px;
+}
+
+
+.languageSelect-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 8px;
+}
+
+
+.language-select {
+    font-size: 14px;
+}
+
+
+.language-choice-submit {
+    background-color: #F8D23C;
+    border: 1px solid white;
+    letter-spacing: .4px;
+    text-transform: uppercase;
+    font-size: 1rem;
+    padding: 5px 8px;
+    transition: color .3s ease;
+    border-radius: 3px;
+}
+
+
+.language-choice-submit:hover, .language-choice-submit:focus {
+    background-color: #fae17e;
+}
+
+
+.translatedText {
+    text-align: center;
+    color: white;
+    letter-spacing: .8px;
+    padding: 1rem 10px;
+    font-size: 2rem;
+}
+
+/******** CIRRUS IMAGE GALLERY SECTION ********/
+.cirrus {
+    border-top: 3px double var(--blue);
+    padding: 3rem 0;
+    display: none;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
+}
+
+
+.cirrusImageWrapper {
+    max-width: 100%;
+}
+
+
+.cirrusImage {
+    display: block;
+    max-width: 100%;
+    border: 1px solid black;
+}
+
+
+/******** NEWS SECTION STYLES ********/
+.news {
+    border-top: 3px double var(--blue);
+    display: none;
+    color: white;
+    background-color: #072545;
+    background: linear-gradient(var(--blue), #072545);
+}
+
+
+/* this is the wrapper for the js dynamically created content */
+.articles-wrapper {
+    padding: 0 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-gap: 2rem;
+}
+
+
+.news-section-header {
+    letter-spacing: 1px;
+    margin: 3rem 0 4rem;
+    text-align: center;
+}
+
+
+.news-card {
+    border: 1px solid #D1282E;
+    padding: 0 20px;
+    background-color: white;
+    color: var(--black);
+    transition: all .3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+.news-card-outer{
+    background-color: white;
+    padding: .5rem;
+}
+
+
+.news-card-outer:hover {
+    background-color: #913E65;
+}
+
+
+.news-title {
+    text-decoration-line: underline;
+    text-align: center;
+}
+
+
+/* TODO: do i need these ????? */
+.news-description, .read-more {
+    max-width 600px;
+    margin 1rem auto;
+}
+
+
+/* push this to the bottom of the news card */
+.read-more {
+    margin-top: auto;
+}
+
+
+/* this is the span element that says 'Read the full article' */
+.bold {
+    font-weight: 600;
+}
+
+
+/* ensure that the url wraps to a new line rather than going out of it's container */
+.news-url {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+
+/* the div that holds the 'no news' paragraph and the alternate search inputs */
+.alternate-search {
+    padding: 5rem 10px 10px 10px;
+    letter-spacing: .6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.1rem;
+}
+
+
+/* the alternate-search div should have less padding when no articles are returned */
+/* applied with javascript */
+.less-padding {
+    padding-top: 0;
+}
+
+
+/* this paragraph will be displayed via javascript when no news articles are returned */
+.no-news {
+    display: none;
+}
+
+
+/* the span 'no news is good news' */
+.new-line {
+    display: block;
+    text-align: center;
+}
+
+
+.search-term {
+    padding: 5px 10px;
+    border: 1px solid #d4ebe3;
+    background-color: #ebf6f2;
+    font-size: 12px;
+}
+
+
+.new-search-submit {  /* TODO: this needs a more contrasting  background color! */
+    border: 1px solid white;
+    width: 100%;
+
+    background-color: var(--blue);
+    color: white;
+
+    letter-spacing: .4px;
+    text-transform: uppercase;
+    font-size: 1rem;
+    padding: 5px 8px;
+    transition: color .3s ease;
+    border-radius: 3px;
+    transition: color .2s ease;
+}
+
+
+.new-search-submit:hover { /* TODO: do i like this??? */
+    background-color: #2378CD;
+}
+
+
+/* give attribution to news api */
+.news-section-footer {
+    padding: 1rem 10px 3px 10px;
+}
+
+/******** ORDER FOOD SECTION STYLES ********/
+.food {
+    display: none;
+    border-top: 3px double var(--blue);
+    background-image: url('../images/foodBackground.png');
+    background-size: contain;
+    background-repeat: repeat;
+}
+
+
+.food-section-header {
+    letter-spacing: 1px;
+    margin: 3rem 0 .4rem;
+    text-align: center;
+}
+
+
+.restaurant-choices {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 3.5rem 0 4.7rem;
+}
+
+
+.restaurant {
+    display: block;
+    padding: 12px 0;
+    width: 200px;
+    font-size: 1.2rem;
+    margin: 1.2rem auto;
+}
+
+
+.restaurant-choice-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s ease-out;
+    background-color: #ebc013;
+    background-image: url('../images/restaurantLeftBackground.png');
+    background-size: contain;
+    background-repeat: repeat;
+}
+
+.restaurant-choice-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 0;
+    font-size: 1.3rem;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    transition: height .5s ease-out;
+    background-color: #8fd0c6;
+    background-image: url('../images/restaurantRightBackground.png');
+    background-size: contain;
+    background-repeat: repeat;
+    
+    /*  animation can also be done this way...
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    */
+}
+
+
+.full-height {
+    height: 50%;
+}
+
+
+/* the link (<a>) to call the restaurant */
+.restaurant-number {
+    text-decoration: none;
+    border: 2px solid #45a495;
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    background-color: white;
+    background-image: url('../images/callLinkBackground.png');
+    background-size: contain;
+    background-repeat: repeat;
+    color: var(--black);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease, background-color .3s ease; /* TODO: why isn't opacity transition  working properly? */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+
+.restaurant-number:hover, .restaurant-number:focus {
+    background-color: #f79855;
+    background-image: url('../images/callLinkHoverBackground.png');
+    background-repeat: repeat;
+    background-size: contain;
+    border: 2px solid white;
+}
+
+
+.go-back {
+   margin-top: auto;
+   opacity: 0;
+   visibility: hidden;
+   text-align: center;
+}
+
+
+.go-back-button {
+    font-size: 1.1rem;
+    border-radius: 10px;
+    border: 1px solid #45a495;
+}
+
+
+.go-back-button:hover, .go-back-button:focus {
+    border: 1px solid white;
+    background-color: #f79855;
+}
+
+
+.full-opacity {
+    visibility: visible;
+     opacity: 1;
+}
+
+
+.restaurant {
+    border: 2px solid #8fd0c6;
+    background-color: #fff;
+    transition: all .2s ease;
+    border-radius: 5px;
+}
+
+
+.restaurant:hover, .restaurant:focus {
+    background-color: #fcf6de;
+}
+
+/******** FOOTER STYLES ********/
+.page-footer {
+    color: #ddd;
+    background-color: #252339;
+    padding: 2rem 10px 10px 10px;
+    display: grid;
+    justify-items: center;
+    letter-spacing: .4px;
+}
+
+
+.goodbye {
+    font-size: 1.2rem;
+}
+
+
+.copyright {
+    margin-bottom: 0;
+    font-size: 1rem;
+    color: #4e4a78;
+    text-align: center;
+}
+
+
+.copyright a {
+    color: #4e4a78;
+    text-decoration: none;
+    transition: all .3s ease;
+}
+
+
+.copyright a:hover, .copyright a:focus {
+    color: #3EB2A2;
+    text-decoration: underline;
+}
+
+
+
+
+/******** MEDIA QUERIES ********/
+@media screen and (min-width: 450px){
+    .language-choices-prompt{
+        grid-template-columns: auto 1fr;
+    }
+}
+
+@media screen and (min-width: 650px){
+    .languageSelect-form {
+        width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .language-choices-prompt{
+        width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .restaurant-choice-right, .restaurant-choice-left {
+        width: 50%;
+    }
+
+    .restaurant-number {
+        /* TODO: can i achieve the following with flexbox??? */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        margin-top: 0;
+    }
+
+    .full-height {
+        height: 100%;
+    }
+}
+
+@media screen and (min-width: 720px){
+    .activity-choices {
+        flex-direction: row;
+        justify-content: center;
+        background-color: var(--lightGray);
+        align-items: center;
+        font-size: 1.1rem;
+    }
+
+    .activitySelect-form {
+        display: grid;
+        grid-gap: 8px;
+        grid-template-columns: auto 1fr;
+    }
+
+    .activity-select {
+        margin-bottom: 0;
+    }
+
+    .activity-choices-prompt {
+        margin: 0;
+        padding-right: 8px;
+        font-size: inherit;
+    }
+}

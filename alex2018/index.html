@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width initial-scale=1'>
+    <title>Hi Alex. Welcome To Your Website</title>
+    <link rel='stylesheet' href='css/styles.css'>
+</head>
+
+<body>
+    <p class='date'></p>
+    <h1 class='greeting'></h1>
+
+    <figure class='nasaImage-wrapper'>
+        <img class='nasa-image'>
+    </figure>
+
+    <main>
+        <div class="activity-choices">
+            <p class="activity-choices-prompt">What would you like to do today?</p>
+            <form class='activitySelect-form'>
+                <select class="activity-select">
+                    <option value='noValue'>Pick something</option>
+                    <option value="languages">Tell Swissport to screw off (in a foreign language)</option>
+                    <option value="news">Get aviation news</option>
+                    <option value="cirrus">Look at pictures of Cirrus</option>
+                    <option value="food">Order food!</option>
+                </select>
+
+                <input class="activity-choice-submit" type='submit'>
+            </form>
+        </div> <!-- close .activity-choices -->
+
+
+        <section class="language-translation">
+            <p class='language-choices-prompt'>
+                <label for="text">What would you like to say? </label>
+                <input required class="text-to-be-translated" id="text" type="text" placeholder="Get off of my airport">
+            </p>
+
+            <form class="languageSelect-form">
+                <select class="language-select">
+                    <option value="noValue">In What Language?</option>
+                    <option value="yoda">Yoda</option>
+                    <option value="jive">Jive</option>
+                    <option value="shakespeare">Shakespeare</option>
+                    <option value="klingon">Klingon</option>
+                    <option value="pirate">Pirate</option>
+                    <option value="minion">Minion</option>
+                    <option value="fudd">Fudd</option>
+                </select>
+
+                <input class="language-choice-submit" type='submit'>
+            </form>
+
+            <p class='translatedText'></p>
+        </section> <!-- close .language-translation -->
+
+
+        <section class="cirrus">
+            <figure class="cirrusImageWrapper">
+                <img class="cirrusImage" src='images/cuteCirrus.jpg' alt='Cirrus sunbathing on the patio'>
+            </figure>
+
+            <figure class="cirrusImageWrapper">
+                <img class="cirrusImage" src='images/dietcokeCirrus.jpg' alt='Cirrus laying next to an empty diet coke box'>
+            </figure>
+
+            <figure class="cirrusImageWrapper">
+                <img class="cirrusImage" src='images/ladybugCirrus.jpg' alt='Cirrus dressed a a ladybug for Halloween'>
+            </figure>
+
+            <figure class="cirrusImageWrapper">
+                <img class="cirrusImage" src='images/sleepyCirrus.jpg' alt='Cirrus sleeping'>
+            </figure>
+
+            <figure class="cirrusImageWrapper">
+                <img class="cirrusImage" src='images/westfieldMallCirrus.jpg' alt='Cirrus in Westfield Mall during the Christmas season'>
+            </figure>
+        </section> <!-- close .cirrus div -->
+
+
+        <section class="news">
+            <h1 class='news-section-header'>In Today's News...</h1>
+
+            <div class='articles-wrapper'></div>
+
+            <div class='alternate-search'>
+                <!-- TODO: what is causing this weird indentation????? -->
+                <p class='no-news'>I can't find anything related to your search term. Try another query or be happy
+                    with <span class='new-line'>~ NO NEWS IS GOOD NEWS ~</span>
+                </p>
+
+                <div class='newSearch-wrapper'>
+                    <p>
+                        <label for="search-term">New Search </label>
+                        <input required class="search-term" id="search-term" type="text" placeholder="kittens">
+
+                    </p>
+                    <input type='submit' class='new-search-submit'>
+                </div>
+
+            </div> <!-- close .alternate-search -->
+
+            <footer class='news-section-footer'>
+                <a rel='noopener' target='_blank' href='https://newsapi.org'>Powered by News API</a>
+            </footer>
+
+        </section> <!-- close .news -->
+
+        <section class="food">
+            <h1 class="food-section-header">HMMMMMMMMZ, what do I want to eat?</h1>
+
+            <div class="restaurant-choices">
+                <button data-number='650.821.8958' class='restaurant jsButton'>Limon</button>
+                <button data-number='650.821.9306' class='restaurant jsButton'>Andale</button>
+                <button data-number='650.821.9315' class='restaurant jsButton'>Lark Creek Grill</button>
+
+                <div class="restaurant-choice-left">
+                    <p class="restaurant-choice"></p>
+                </div> <!-- close .restaurant-choice-left -->
+
+                <div class="restaurant-choice-right">
+                    <a class='restaurant-number' aria-label='' href=''>CALL</a>
+
+                    <p class='go-back'>I changed my mind.
+                        <button class='go-back-button jsButton'>go back</button>
+                    </p>
+                </div> <!-- close .restaurant-choice-right -->
+
+            </div> <!-- close .restaurant-choices -->
+
+        </section> <!-- close .food -->
+
+    </main>
+
+    <footer class='page-footer'>
+        <p class="goodbye">See You Tomorrow</p>
+
+        <p class="copyright">Copyright &copy; <span class="copyright-year"></span>
+            <a rel="noopener" href="https://msksfo.github.io/TangoEchoDesign" target="_blank">
+                TangoEchoDesign
+            </a> All Rights Reserved
+        </p>
+    </footer>
+
+    <script src='js/main.js'></script>
+</body>
+
+</html>
