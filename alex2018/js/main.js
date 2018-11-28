@@ -448,8 +448,6 @@ function main() {
 }
 main();
 
-//TODO: style restaurant buttons
-
 //TODO: refactor code 
 
 
