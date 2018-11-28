@@ -3,6 +3,9 @@ body {
     box-sizing: border-box;  
     color: var(--black);
     line-height: 1.6;
+
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 
@@ -16,7 +19,7 @@ body {
 
 
 .date {
-    color: #ccc;
+    color: #bbb;
     transition: color .3s ease;
 }
 
@@ -136,6 +139,10 @@ body {
     font-size: 14px;
 }
 
+.language-select:focus {
+    border: 1px solid blue;
+}
+
 
 .language-choice-submit {
     background-color: #F8D23C;
@@ -165,9 +172,11 @@ body {
 /******** CIRRUS IMAGE GALLERY SECTION ********/
 .cirrus {
     border-top: 3px double var(--blue);
+    border-left: 1px solid rgba(238, 238, 238, .8);
+    border-right: 1px solid rgba(238, 238, 238, .8);
     padding: 3rem 0;
     display: none;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 
