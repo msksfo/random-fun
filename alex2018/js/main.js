@@ -6,20 +6,37 @@ const goBackButton = document.querySelector('.go-back-button');
 const restaurantChoices = document.querySelector('.restaurant-choices');
 const textToBeTranslated = document.querySelector('.text-to-be-translated');
 
-const languageTranslationDiv = document.querySelector('.language-translation');
-const cirrusDiv = document.querySelector('.cirrus');
-const newsDiv = document.querySelector('.news');
-const foodDiv = document.querySelector('.food');
+// get the news on page load, with the default topic of aviation
+const getAviationNews = getNews;
 
 
 /* boolean to control when to call getNews function. if the user didn't enter a new search term, don't make another fetch request */
 let newNews = false;
 
-const getAviationNews = getNews;
+
+/******** FUNCTIONS ********/
+
+// get the page sections that will be shown/hidden via javascript
+function getPageSections() {
+    const languageTranslationDiv = document.querySelector('.language-translation');
+    const cirrusDiv = document.querySelector('.cirrus');
+    const newsDiv = document.querySelector('.news');
+    const foodDiv = document.querySelector('.food');
+
+    return {
+        languageTranslationDiv,
+        cirrusDiv,
+        newsDiv,
+        foodDiv
+    }
+}
+
 
 // if the user selects 'pick something' from the dropdown menu, reset everything to default values
 const activitySelect = document.querySelector('.activity-select');
 activitySelect.onchange = function (e) {
+    const { languageTranslationDiv, cirrusDiv, newsDiv, foodDiv } = getPageSections();
+
     if (e.target.value === 'noValue') {
         hideUnselectedActivities(languageTranslationDiv, cirrusDiv, newsDiv, foodDiv);
         if (newNews) {
@@ -28,15 +45,15 @@ activitySelect.onchange = function (e) {
     }
 }
 
+
 // choose an activity from the select dropdown menu of activities
 function chooseActivity(e) {
-    //TODO: disable submit so user can only click once?
+    const { languageTranslationDiv, cirrusDiv, newsDiv, foodDiv } = getPageSections();
 
     e.preventDefault();
     const activitySelect = document.querySelector('.activity-select');
     let activityChoice = activitySelect.value;
 
-    //TODO: use switch here?
     if (activityChoice === 'languages') {
         showActivity(languageTranslationDiv, 'flex');
         hideUnselectedActivities(cirrusDiv, newsDiv, foodDiv);
@@ -65,6 +82,8 @@ function showActivity(div, display) {
 */
 function hideUnselectedActivities(...args) {
     const divsArr = [...args];
+
+    const { languageTranslationDiv, newsDiv, foodDiv } = getPageSections();
 
     if (divsArr.includes(languageTranslationDiv)) {
         clearTranslationDiv();
@@ -379,6 +398,7 @@ function appendArticleElements(newsArticles) {
 }
 
 
+// animate the split screen div when user chooses a restaurant
 function handleRestaurantChoice(e) {
     // make sure the click was on the button, not the parent div
     if (e.target !== e.currentTarget && e.target.classList.contains('jsButton')) {
@@ -409,6 +429,7 @@ function handleRestaurantChoice(e) {
     }
 }
 
+// reverse the split screen div animation so user can see all restaurant options again
 function goBack(e) {
     // don't let the event bubble up to the parent
     if (e) {
@@ -428,6 +449,15 @@ function goBack(e) {
 }
 
 
+// call the functions necessary to load initial content on the page
+function main() {
+    displayDate(getHeaderText);
+    getPicOfDay();
+    getAviationNews();
+}
+
+/******** EVENT LISTENERS ********/
+
 goBackButton.addEventListener('click', goBack);
 
 restaurantChoices.addEventListener('click', handleRestaurantChoice);
@@ -441,13 +471,6 @@ newSearchSubmitButton.addEventListener('click', getNewNews);
 textToBeTranslated.addEventListener('focus', clearTranslationDiv);
 
 
-function main() {
-    displayDate(getHeaderText);
-    getPicOfDay();
-    getAviationNews();
-}
 main();
-
-//TODO: refactor code 
 
 
