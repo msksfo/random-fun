@@ -110,21 +110,22 @@ function getDate() {
 
     let fullDate = new Date();
     let time = fullDate.getHours();
-    let month = fullDate.getMonth();
+    let month = fullDate.getMonth() + 1;  // add 1 to the month for easier human readability
     let todaysDate = fullDate.getDate();
 
     return {
-        fullDate: new Date(),
-        time: fullDate.getHours(),
-        month: fullDate.getMonth(),
-        todaysDate: fullDate.getDate()
+        fullDate,
+        time,
+        month,
+        todaysDate
     }
 }
 
 
 // use today's date & time to determine the header greeting
 function getHeaderText() {
-    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Obtober', 'November', 'December']
+    // leave the first index empty, so the month numbers will be what you expect (Jan -> 1, etc)
+    const months = [null, 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Obtober', 'November', 'December']
 
     // get all date info & destructure it into variables
     let { fullDate, time, month, todaysDate } = getDate();
@@ -134,7 +135,7 @@ function getHeaderText() {
 
 
     // if it's Alex's birthday, display birthday greeting. otherwise display generic greeting 
-    if ((month + 1 === 11) && (todaysDate === 27)) {
+    if ((month === 11) && (todaysDate === 27)) {
         greeting.innerHTML = 'HAPPY BIRTHDAY ALEX!'
     } else {
         if (time < 12) { // AM times
@@ -144,7 +145,7 @@ function getHeaderText() {
         }
     }
 
-    // return the day, date, and year
+    // return the date, month, and year
     let dateString = '';
     dateString = `${todaysDate} ${months[month]}, ${fullDate.getFullYear()}`
     return dateString;
