@@ -271,8 +271,8 @@ function getNews(topic = 'aviation') {
             if (data.articles.length === 0) {
                 noNews.style.display = 'block';
                 lessPadding();
-            } else if (data.articles.length > 3) {
-                for (let i = 0; i < 3; i++) {
+            } else {
+                for (let i = 0; i < data.articles.length && i < 3; i++) {
                     let tempObj = {};
                     tempObj.title = data.articles[i].title;
                     tempObj.description = data.articles[i].description;
@@ -280,17 +280,6 @@ function getNews(topic = 'aviation') {
                     articles.push(tempObj);
                 }
                 resetPadding()
-                appendArticleElements(articles);
-
-            } else {
-                data.articles.forEach(function (value) {
-                    let tempObj = {};
-                    tempObj.title = value.title;
-                    tempObj.description = value.description;
-                    tempObj.url = value.url;
-                    articles.push(tempObj);
-                })
-                resetPadding();
                 appendArticleElements(articles);
             }
         })
