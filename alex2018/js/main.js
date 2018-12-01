@@ -68,8 +68,8 @@ function showActivity(div, display) {
     1. clear out translation div and reset news div, as needed
     2. hide all activity divs except for the one the user selected
 */
-function hideUnselectedActivities(...args) {
-    const divsArr = [...args];
+function hideUnselectedActivities() {
+    const divsArr = [...arguments];
 
     const { languageTranslation, news, food } = getPageSections();
 
