@@ -18,16 +18,16 @@ let newNews = false;
 
 // get the page sections that will be shown/hidden via javascript
 function getPageSections() {
-    const languageTranslationDiv = document.querySelector('.language-translation');
-    const cirrusDiv = document.querySelector('.cirrus');
-    const newsDiv = document.querySelector('.news');
-    const foodDiv = document.querySelector('.food');
+    const languageTranslation = document.querySelector('.language-translation');
+    const cirrus = document.querySelector('.cirrus');
+    const news = document.querySelector('.news');
+    const food = document.querySelector('.food');
 
     return {
-        languageTranslationDiv,
-        cirrusDiv,
-        newsDiv,
-        foodDiv
+        languageTranslation,
+        cirrus,
+        news,
+        food
     }
 }
 
@@ -35,10 +35,10 @@ function getPageSections() {
 // if the user selects 'pick something' from the dropdown menu, reset everything to default values
 const activitySelect = document.querySelector('.activity-select');
 activitySelect.onchange = function (e) {
-    const { languageTranslationDiv, cirrusDiv, newsDiv, foodDiv } = getPageSections();
+    const { languageTranslation, cirrus, news, food } = getPageSections();
 
     if (e.target.value === 'noValue') {
-        hideUnselectedActivities(languageTranslationDiv, cirrusDiv, newsDiv, foodDiv);
+        hideUnselectedActivities(languageTranslation, cirrus, news, food);
         if (newNews) {
             resetNews();
         }
@@ -48,24 +48,24 @@ activitySelect.onchange = function (e) {
 
 // choose an activity from the select dropdown menu of activities
 function chooseActivity(e) {
-    const { languageTranslationDiv, cirrusDiv, newsDiv, foodDiv } = getPageSections();
+    const { languageTranslation, cirrus, news, food } = getPageSections();
 
     e.preventDefault();
     const activitySelect = document.querySelector('.activity-select');
     let activityChoice = activitySelect.value;
 
     if (activityChoice === 'languages') {
-        showActivity(languageTranslationDiv, 'flex');
-        hideUnselectedActivities(cirrusDiv, newsDiv, foodDiv);
+        showActivity(languageTranslation, 'flex');
+        hideUnselectedActivities(cirrus, news, food);
     } else if (activityChoice === 'cirrus') {
-        showActivity(cirrusDiv, 'grid');
-        hideUnselectedActivities(languageTranslationDiv, newsDiv, foodDiv);
+        showActivity(cirrus, 'grid');
+        hideUnselectedActivities(languageTranslation, news, food);
     } else if (activityChoice === 'news') {
-        showActivity(newsDiv, 'block');
-        hideUnselectedActivities(languageTranslationDiv, cirrusDiv, foodDiv);
+        showActivity(news, 'block');
+        hideUnselectedActivities(languageTranslation, cirrus, food);
     } else if (activityChoice === 'food') {
-        showActivity(foodDiv, 'grid');
-        hideUnselectedActivities(languageTranslationDiv, cirrusDiv, newsDiv);
+        showActivity(food, 'grid');
+        hideUnselectedActivities(languageTranslation, cirrus, news);
     }
 }
 
@@ -83,17 +83,17 @@ function showActivity(div, display) {
 function hideUnselectedActivities(...args) {
     const divsArr = [...args];
 
-    const { languageTranslationDiv, newsDiv, foodDiv } = getPageSections();
+    const { languageTranslation, news, food } = getPageSections();
 
-    if (divsArr.includes(languageTranslationDiv)) {
+    if (divsArr.includes(languageTranslation)) {
         clearTranslationDiv();
     }
 
-    if (divsArr.includes(newsDiv) && (newNews)) {
+    if (divsArr.includes(news) && (newNews)) {
         resetNews();
     }
 
-    if (divsArr.includes(foodDiv)) {
+    if (divsArr.includes(food)) {
         let restaurantChoice = document.querySelector('.restaurant-choice');
         if (restaurantChoice.innerHTML) {
             goBack();
