@@ -7,11 +7,10 @@
         newSearchSubmitButton: document.querySelector('.new-search-submit'),
         goBackButton: document.querySelector('.go-back-button'),
         restaurantChoices: document.querySelector('.restaurant-choices'),
-        textToBeTranslated: document.querySelector('.text-to-be-translated')
+        textToBeTranslated: document.querySelector('.text-to-be-translated'),
+        activitySelect: document.querySelector('.activity-select')
     }
 
-
-    const activitySelect = document.querySelector('.activity-select');
 
     // get the news on page load, with the default topic of aviation
     const getAviationNews = getNews;
@@ -35,6 +34,19 @@
             cirrus,
             news,
             food
+        }
+    }
+
+
+    // if the user selects 'pick something' from the dropdown menu, reset everything to default values
+    function handleNoActivitySelected(e) {
+        const { languageTranslation, cirrus, news, food } = getPageSections();
+
+        if (e.target.value === 'noValue') {
+            hideUnselectedActivities(languageTranslation, cirrus, news, food);
+            if (newNews) {
+                resetNews();
+            }
         }
     }
 
@@ -447,20 +459,11 @@
         getAviationNews();
     }
 
+
+
     /******** EVENT LISTENERS ********/
 
-    // if the user selects 'pick something' from the dropdown menu, reset everything to default values
-    activitySelect.onchange = function (e) {
-        const { languageTranslation, cirrus, news, food } = getPageSections();
-
-        if (e.target.value === 'noValue') {
-            hideUnselectedActivities(languageTranslation, cirrus, news, food);
-            if (newNews) {
-                resetNews();
-            }
-        }
-    }
-
+    myDomNodes.activitySelect.addEventListener('change', handleNoActivitySelected);
 
     myDomNodes.goBackButton.addEventListener('click', goBack);
 
