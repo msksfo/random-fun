@@ -38,7 +38,7 @@
     }
 
 
-    // if the user selects 'pick something' from the dropdown menu, reset everything to default values
+    // if the user selects 'choose an option below' from the dropdown menu, reset everything to default values
     function handleNoActivitySelected(e) {
         const { languageTranslation, cirrus, news, food } = getPageSections();
 
