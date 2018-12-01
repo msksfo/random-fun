@@ -6,6 +6,8 @@ const goBackButton = document.querySelector('.go-back-button');
 const restaurantChoices = document.querySelector('.restaurant-choices');
 const textToBeTranslated = document.querySelector('.text-to-be-translated');
 
+const activitySelect = document.querySelector('.activity-select');
+
 // get the news on page load, with the default topic of aviation
 const getAviationNews = getNews;
 
@@ -28,20 +30,6 @@ function getPageSections() {
         cirrus,
         news,
         food
-    }
-}
-
-
-// if the user selects 'pick something' from the dropdown menu, reset everything to default values
-const activitySelect = document.querySelector('.activity-select');
-activitySelect.onchange = function (e) {
-    const { languageTranslation, cirrus, news, food } = getPageSections();
-
-    if (e.target.value === 'noValue') {
-        hideUnselectedActivities(languageTranslation, cirrus, news, food);
-        if (newNews) {
-            resetNews();
-        }
     }
 }
 
@@ -457,6 +445,18 @@ function main() {
 }
 
 /******** EVENT LISTENERS ********/
+
+// if the user selects 'pick something' from the dropdown menu, reset everything to default values
+activitySelect.onchange = function (e) {
+    const { languageTranslation, cirrus, news, food } = getPageSections();
+
+    if (e.target.value === 'noValue') {
+        hideUnselectedActivities(languageTranslation, cirrus, news, food);
+        if (newNews) {
+            resetNews();
+        }
+    }
+}
 
 goBackButton.addEventListener('click', goBack);
 
