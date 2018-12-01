@@ -1,10 +1,14 @@
+
 // variables for event listeners
-const activitySumbitButton = document.querySelector('.activity-choice-submit');
-const languageSubmitButton = document.querySelector('.language-choice-submit');
-const newSearchSubmitButton = document.querySelector('.new-search-submit');
-const goBackButton = document.querySelector('.go-back-button');
-const restaurantChoices = document.querySelector('.restaurant-choices');
-const textToBeTranslated = document.querySelector('.text-to-be-translated');
+const myDomNodes = {
+    activitySumbitButton: document.querySelector('.activity-choice-submit'),
+    languageSubmitButton: document.querySelector('.language-choice-submit'),
+    newSearchSubmitButton: document.querySelector('.new-search-submit'),
+    goBackButton: document.querySelector('.go-back-button'),
+    restaurantChoices: document.querySelector('.restaurant-choices'),
+    textToBeTranslated: document.querySelector('.text-to-be-translated')
+}
+
 
 const activitySelect = document.querySelector('.activity-select');
 
@@ -237,7 +241,7 @@ function clearTranslationDiv() {
 
     languageSelect.selectedIndex = 0;
     textInput.value = '';
-    translatedText.innerHTML = '';
+    clearHTML(translatedText);
 }
 
 
@@ -289,7 +293,7 @@ function getNews(topic = 'aviation') {
 // remove the old articles when the user submits a new search query
 function clearPreviousNews() {
     const parentDiv = document.querySelector('.articles-wrapper');
-    parentDiv.innerHTML = '';
+    clearHTML(parentDiv);
 }
 
 
@@ -407,15 +411,23 @@ function handleRestaurantChoice(e) {
     }
 }
 
+
+// take in an element and clear the innerHTML
+function clearHTML(elem) {
+    elem.innerHTML = '';
+}
+
 // reverse the split screen div animation so user can see all restaurant options again
 function goBack(e) {
+    const restaurantChoice = document.querySelector('.restaurant-choice');
+
     // don't let the event bubble up to the parent
     if (e) {
         e.stopPropagation();
     }
 
     // remove the restaurant name from the html
-    document.querySelector('.restaurant-choice').innerHTML = '';
+    clearHTML(restaurantChoice);
 
     // the split screen divs and height animation
     document.querySelector('.restaurant-choice-right').classList.remove('full-height');
@@ -448,18 +460,18 @@ activitySelect.onchange = function (e) {
     }
 }
 
-goBackButton.addEventListener('click', goBack);
 
-restaurantChoices.addEventListener('click', handleRestaurantChoice);
+myDomNodes.goBackButton.addEventListener('click', goBack);
 
-activitySumbitButton.addEventListener('click', chooseActivity);
+myDomNodes.restaurantChoices.addEventListener('click', handleRestaurantChoice);
 
-languageSubmitButton.addEventListener('click', chooseLanguage);
+myDomNodes.activitySumbitButton.addEventListener('click', chooseActivity);
 
-newSearchSubmitButton.addEventListener('click', getNewNews);
+myDomNodes.languageSubmitButton.addEventListener('click', chooseLanguage);
 
-textToBeTranslated.addEventListener('focus', clearTranslationDiv);
+myDomNodes.newSearchSubmitButton.addEventListener('click', getNewNews);
 
+myDomNodes.textToBeTranslated.addEventListener('focus', clearTranslationDiv);
 
 main();
 
