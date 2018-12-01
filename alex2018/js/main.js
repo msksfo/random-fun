@@ -55,20 +55,28 @@
     function chooseActivity(e) {
         const { languageTranslation, cirrus, news, food } = getPageSections();
 
+        // save these to variables to reduce change of typos
+        const ACTIVITY_CHOICES = {
+            LANGUAGES: 'languages',
+            CIRRUS: 'cirrus',
+            NEWS: 'news',
+            FOOD: 'food'
+        }
+
         e.preventDefault();
         const activitySelect = document.querySelector('.activity-select');
         let activityChoice = activitySelect.value;
 
-        if (activityChoice === 'languages') {
+        if (activityChoice === ACTIVITY_CHOICES.LANGUAGES) {
             showActivity(languageTranslation, 'flex');
             hideUnselectedActivities(cirrus, news, food);
-        } else if (activityChoice === 'cirrus') {
+        } else if (activityChoice === ACTIVITY_CHOICES.CIRRUS) {
             showActivity(cirrus, 'grid');
             hideUnselectedActivities(languageTranslation, news, food);
-        } else if (activityChoice === 'news') {
+        } else if (activityChoice === ACTIVITY_CHOICES.NEWS) {
             showActivity(news, 'block');
             hideUnselectedActivities(languageTranslation, cirrus, food);
-        } else if (activityChoice === 'food') {
+        } else if (activityChoice === ACTIVITY_CHOICES.FOOD) {
             showActivity(food, 'grid');
             hideUnselectedActivities(languageTranslation, cirrus, news);
         }
