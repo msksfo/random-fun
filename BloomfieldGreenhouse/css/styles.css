@@ -23,6 +23,7 @@ h2 {
 }
 
 body {
+   margin-top: 0;
     font-size: 1rem;
     color: var(--dark-gray);
 }
@@ -46,27 +47,34 @@ header {
     top: 0;
     z-index: 1;
     background:white;
-    height: 108px;
     display: grid;
     grid-template-columns: repeat(2, min-content);
-   
     justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-
+    align-items: baseline;
+    padding: 1rem .5rem;
     border-bottom: 1px solid #f2cda7;
 }
 
+
 .logo {
     font-size: 2rem;
+    display: grid;
 }
+
 
 .logo-link {
     color: var(--dark-gray);
+     margin-bottom: .4rem;
 }
+
 
 .logo-link:hover, .logo-link:focus {
     color: var(--green);
+}
+
+
+.planting-zone {
+    font-size: 1rem;
 }
 
 
@@ -97,7 +105,7 @@ header {
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 }
 
 
@@ -443,6 +451,16 @@ footer p {
 /*                        Media Queries                             */
 /*==================================================================*/
 
+@media screen and (min-width: 500px){
+    header {
+        grid-template-columns: repeat(2, auto);
+    }
+
+    .planting-zone {
+        text-align: right;
+    }
+}
+
 @media screen and (min-width: 600px){
     .contact-info {
         display: flex;
@@ -461,10 +479,14 @@ footer p {
 
 
 
-@media screen and (min-width: 768px){
+@media screen and (min-width: 780px){
     /* ==== header/navigation ==== */
     header {
         display: flex;
+    }
+
+    .planting-zone {
+        text-align: left;
     }
 
     .mobile-icon {
