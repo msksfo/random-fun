@@ -350,9 +350,7 @@ header {
 }
 
 .modal-item {
-    background-color: ivory;
     background-color: white;
-
     visibility: hidden;
     opacity: 0;
     transform: translateY(60px);
@@ -378,16 +376,15 @@ header {
     margin: 20px 20px 20px auto;
     padding: 8px;
     border: 3px solid var(--flower-yellow);
-    outline: none;
     border-radius: 5px;
     transition: all .3s ease;
 }
 
-.close-modal-button:hover {
-    outline: none;
+.close-modal-button:hover, .close-modal-button:focus {
     background-color: var(--flower-yellow);
     cursor: pointer;
     border-radius: 5px;
+    border: 3px solid white;
 }
 
 
