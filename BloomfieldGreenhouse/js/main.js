@@ -33,7 +33,7 @@ logoLink.addEventListener('keypress', function (e) {
 
 plantsContent.addEventListener('click', function (e) {
     // make sure the animation is only triggered if an h2 was clicked
-    if (e.target.classList.value === 'open-modal') { // .plant-title or .open-modal???
+    if (e.target.classList.value === 'open-modal-alternate') { // .plant-title or .open-modal???
         flowerModal.classList.add('flower-modal-expanded');
 
         // TODO: only show the modal items of the parent that was clicked
