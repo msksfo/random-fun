@@ -33,21 +33,21 @@ logoLink.addEventListener('keypress', function (e) {
 
 plantsContent.addEventListener('click', function (e) {
     // make sure the animation is only triggered if an h2 was clicked
-    if (e.target.classList.value === 'plant-title') {
+    if (e.target.classList.value === 'open-modal') { // .plant-title or .open-modal???
         flowerModal.classList.add('flower-modal-expanded');
 
+        // TODO: only show the modal items of the parent that was clicked
         modalItems.forEach(value => value.classList.add('show-modal-content'));
     }
 });
 
 
 closeModalButton.addEventListener('click', function (e) {
-    // QUICKLY transition to hide the modal content
+    // QUICKLY transition to hide the modal content when the modal is closed
     modalItems.forEach(value => value.classList.add('hide-modal-content'));
 
     // close the modal, remove the class that shows the modal content
     modalItems.forEach(value => value.classList.remove('show-modal-content'));
-
     flowerModal.classList.remove('flower-modal-expanded');
 });
 
