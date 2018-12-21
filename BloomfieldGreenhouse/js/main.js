@@ -3,7 +3,7 @@
 const logoLink = document.getElementById('logo-link');
 
 const plantsContent = document.querySelector('.plants-content');
-const flowerModal = document.querySelector('.flower-modal');
+const plantsModal = document.querySelector('.plants-modal');
 const modalItems = document.querySelectorAll('.modal-item');
 const closeModalButton = document.querySelector('.close-modal-button');
 
@@ -31,10 +31,14 @@ logoLink.addEventListener('keypress', function (e) {
     }
 });
 
+
 plantsContent.addEventListener('click', function (e) {
+    console.log(e.target.classList.value)
+    console.log(plantsModal);
+
     // make sure the animation is only triggered if an h2 was clicked
     if (e.target.classList.value === 'open-modal-alternate') { // .plant-title or .open-modal???
-        flowerModal.classList.add('flower-modal-expanded');
+        plantsModal.classList.add('plants-modal-expanded');
 
         // TODO: only show the modal items of the parent that was clicked
         modalItems.forEach(value => value.classList.add('show-modal-content'));
@@ -48,12 +52,12 @@ closeModalButton.addEventListener('click', function (e) {
 
     // close the modal, remove the class that shows the modal content
     modalItems.forEach(value => value.classList.remove('show-modal-content'));
-    flowerModal.classList.remove('flower-modal-expanded');
+    plantsModal.classList.remove('plants-modal-expanded');
 });
 
 
 // when the modal transition has ended, remove the class that adds the QUICK transition to hide modal content
-flowerModal.addEventListener('transitionend', function (e) {
+plantsModal.addEventListener('transitionend', function (e) {
     modalItems.forEach(value => value.classList.remove('hide-modal-content'));
 })
 

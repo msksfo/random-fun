@@ -321,6 +321,7 @@ header {
 .open-modal-alternate {
     border: none;
     background-color: white;
+    color: inherit;
     font-family: inherit;
     font-size: inherit;
     padding: 0;
@@ -330,11 +331,12 @@ header {
 
 .greater-than-symbol {
     margin-left: .5rem;
+    margin-left: 2px;
     visibility: hidden;
 }
 
 .open-modal-alternate:hover, .open-modal-alternate:focus {
-    padding: 2px 7px;
+    padding: 2px 8px;
     cursor: pointer;
     outline: none;
     background: radial-gradient(50% 50% at 50% 50%, #faffd1 0%, #6db148 100%) no-repeat 50% 50% / 100% 100%;
@@ -367,14 +369,13 @@ header {
 /*                      Plant Modals                               */
 /* =============================================================== */
 
-.flower-modal {
+.plants-modal {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     min-height: 100%;
     overflow-y: scroll;
-   
     display: flex;
     flex-direction: column;
     background-color: #8dad87;
@@ -386,7 +387,7 @@ header {
 }
 
 
-.flower-modal-expanded {
+.plants-modal-expanded {
     transform: scaleX(1);
 }
 
