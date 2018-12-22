@@ -442,6 +442,7 @@ header {
 /* ================================================================ */
 
 .gifts {
+    background-color: var(--not-white);
     padding: 3rem 1rem;
 }
 
@@ -466,42 +467,6 @@ header {
 .gifts-text {
     font-size: 1.1rem;
     line-height: 1.4;
-}
-
-
-/* ================================================================ */
-/*                  Fruits & Vegetables Section                     */
-/*==================================================================*/
-
-.food {
-    background-color: var(--not-white);
-    padding: 3rem 1rem;
-}
-
-.food-content {
-    display: grid;
-    grid-gap: 1rem;
-}
-
-.food-figure {
-    margin: 0;
-    max-width: 100%;
-}
-
-.food-img {
-    max-width: 100%;
-}
-
-.food-text {
-    font-size: 1.1rem;
-    line-height: 1.4;
-}
-
-.section-list {
-    list-style: inside;
-    padding: 0;
-    margin: 0;
-    font-size: 1.3rem;
 }
 
 
