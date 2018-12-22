@@ -278,21 +278,9 @@ header {
 }
 
 
-.plant-title:hover {  /* TODO:  maybe i don't need/want this  */
-    cursor pointer;
-}
-
-
-.plant-title:hover, .plant-title:focus { /* TODO:  keep this, or no?  */
-    background: radial-gradient(50% 50% at 50% 50%, #faffd1 0%, var(--lighter-green) 100%) no-repeat 50% 50% / 100% 100%;
-
-    border-radius: 5px;
-}
-
-
 
 /* the paragraph text describing each type of plant */
-/* TODO only keep this if using view all buttons */
+/* TODO: only keep this if using view all buttons */
 .plant-type-description {
     /* because display flex on the parent does not collapse margins */
     margin-top: 0;
@@ -330,7 +318,6 @@ header {
 }
 
 .greater-than-symbol {
-    margin-left: .5rem;
     margin-left: 2px;
     visibility: hidden;
 }
