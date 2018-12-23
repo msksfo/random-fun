@@ -8,18 +8,22 @@ const modalItems = document.querySelectorAll('.modal-item');
 const closeModalButton = document.querySelector('.close-modal-button');
 let lastFocusedElement;
 
-// So the copyright date will always be the current year
-const year = document.querySelector('.year');
-let date = new Date();
-year.innerHTML = date.getFullYear();
-
-
 
 /******** FUNCTIONS ********/
 
 function scrollToTop() {
     window.scroll(0, 0)
 }
+
+
+// So the copyright date will always be the current year
+function setCurrentYear() {
+    const year = document.querySelector('.year');
+    let date = new Date();
+    year.innerHTML = date.getFullYear();
+}
+
+
 
 function showModal(e) {
     plantsModal.classList.add('plants-modal-expanded');
@@ -30,14 +34,17 @@ function showModal(e) {
     // make the modal visible to screen readers
     plantsModal.setAttribute('aria-hidden', false);
 
+    /*
+        if a keyboard event triggered the modal, 
+        1. remember which element was in focus before opening the modal
+        2. set focus on the close button when the modal is opened
+        3. create a keyboard trap to prevent tabbing outside the modal
+    */
     if (e.type === 'keydown') {
-        // remember which element was focused before opening the modal
         lastFocusedElement = document.activeElement;
 
-        // set focus on the close button when the modal is opened
         closeModalButton.focus();
 
-        // keyboard trap to prevent tabbing outside the modal
         plantsModal.addEventListener('keydown', function (e) {
             if (e.keyCode === 9) {
                 e.preventDefault()
@@ -93,14 +100,14 @@ plantsContent.addEventListener('click', function (e) {
 
 plantsContent.addEventListener('keydown', function (e) {
 
-    // allow the user to open the modal by pressing 'enter', or the space bar
+    // user can open the modal by pressing 'enter', or the space bar
     if ((e.target.classList.value === 'open-modal-alternate') && (e.keyCode === 13 || e.keyCode === 32)) {
         // prevent default behavior of enter and space
         e.preventDefault();
 
         showModal(e);
 
-    } else {
+    } else {  // user can close modal with space (if block), enter or escapse (if/else block)
         if ((e.target.classList.value === 'close-modal-button') && (e.keyCode === 32)) {
             // prevent the default behavior of the space key
             e.preventDefault();
@@ -130,8 +137,8 @@ plantsContent.addEventListener('transitionend', function (e) {
 
 })
 
-
-
-function scrollToTop() {
-    window.scroll(0, 0)
+function main() {
+    setCurrentYear();
 }
+
+main();
