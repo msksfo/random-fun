@@ -1,12 +1,14 @@
 
+
 /******* VARIABLES ********/
 const logoLink = document.getElementById('logo-link');
 
 const plantsContent = document.querySelector('.plants-content');
 const plantsModal = document.querySelector('.plants-modal');
-const modalItems = document.querySelectorAll('.modal-item');
+//let modalItems = document.querySelectorAll('.modal-item');
 const closeModalButton = document.querySelector('.close-modal-button');
 let lastFocusedElement;
+
 
 
 /******** FUNCTIONS ********/
@@ -24,11 +26,55 @@ function setCurrentYear() {
 }
 
 
+// get the plant data, to be used in the modal items when the plants modal is opened
+function getPlantData(dataObject) {
+    return dataObject;
+}
+
+
+function buildModalItemCards(e) {
+    const plantData = getPlantData(plantInfo);
+    const modalGrid = document.querySelector('.modal-grid');
+
+    // get the h2 corresponding to the button that was clicked (flowers, herbs, etc)
+    let plantType = e.target.parentElement.previousElementSibling.innerHTML;
+
+    // get the array of plants from the type that was clicked
+    let plantsArr = plantData[plantType]; // ie sun, sun / shade, shade
+
+    // loop over the array of plants, and use string templating to build out the cards with the corresponding headers and list items
+    plantsArr.forEach((value, index) => {
+        let header = Object.keys(plantsArr[index]);
+        let contentArr = Object.values(value);
+
+        let cardContent =
+            `<ul>
+                ${contentArr.map(item => {
+                return item.map(value => `<li>${value}</li>`).join('')
+            })}
+             </ul>
+            `;
+
+        let modalCard =
+            `<div class="modal-item">
+                <h2 class="modal-item-header">${header}</h2>
+                ${cardContent}
+            </div>`;
+
+        // add each card to the modal grid div
+        modalGrid.innerHTML += modalCard;
+    });
+
+}
+
 
 function showModal(e) {
+    let modalItems = document.querySelectorAll('.modal-item');
+
+    // css transform translateX opens the modal window
     plantsModal.classList.add('plants-modal-expanded');
 
-    // TODO: only show the modal items of the parent that was clicked
+    // keyframes animation to show the modal content
     modalItems.forEach(value => value.classList.add('show-modal-content'));
 
     // make the modal visible to screen readers
@@ -54,14 +100,22 @@ function showModal(e) {
 
 }
 
-function hideModal(e) {
 
-    // QUICKLY transition to hide the modal content when the modal is closed
+// clear all content from the modal window
+function clearModal() {
+    const modalGrid = document.querySelector('.modal-grid');
+    modalGrid.innerHTML = '';
+}
+
+
+
+function hideModal(e) {
+    let modalItems = document.querySelectorAll('.modal-item');
+
+    // keyframes animation QUICKLY transitions to hide the modal content when the modal is closed
     modalItems.forEach(value => value.classList.add('hide-modal-content'));
 
-    // close the modal, remove the class that shows the modal content
-    modalItems.forEach(value => value.classList.remove('show-modal-content'));
-
+    // css transform translateX closes the modal window
     plantsModal.classList.remove('plants-modal-expanded');
 
     // hide the modal from screen readers
@@ -71,8 +125,14 @@ function hideModal(e) {
         // return focus to the element that held focus before the modal was open 
         lastFocusedElement.focus();
     }
-
 }
+
+
+function main() {
+    setCurrentYear();
+}
+
+
 
 /******** EVENT LISTENERS ********/
 
@@ -89,10 +149,9 @@ plantsContent.addEventListener('click', function (e) {
 
     // make sure the animation is only triggered if the open modal button was clicked
     if (e.target.classList.value === 'open-modal-alternate') { // .plant-title or .open-modal???
-
+        buildModalItemCards(e);
         showModal(e);
     } else if (e.target.classList.value === 'close-modal-button') {
-
         hideModal(e)
     }
 });
@@ -105,6 +164,7 @@ plantsContent.addEventListener('keydown', function (e) {
         // prevent default behavior of enter and space
         e.preventDefault();
 
+        buildModalItemCards(e);
         showModal(e);
 
     } else {  // user can close modal with space (if block), enter or escapse (if/else block)
@@ -127,18 +187,16 @@ plantsContent.addEventListener('keydown', function (e) {
 
 
 /*
-    when the transition to close the modal window (by removing the class .plants-modal-expanded) is complete, remove the class that adds the QUICK transition to hide modal content
+    when the transition to close the modal window (by removing the class .plants-modal-expanded) is complete, clear all html content from the modal
 */
 plantsContent.addEventListener('transitionend', function (e) {
+
     // conditionals to ensure the event only fires on the intended transition
     if (e.propertyName === 'transform' && e.target.classList.value === 'plants-modal') {
-        modalItems.forEach(value => value.classList.remove('hide-modal-content'));
+        clearModal()
     }
 
-})
+});
 
-function main() {
-    setCurrentYear();
-}
 
 main();
