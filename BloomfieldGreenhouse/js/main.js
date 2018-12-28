@@ -88,21 +88,29 @@ function buildModalItemCards(e) {
 }
 
 
-//give the modal window an aria label, according to the plant type that was clicked
-function setAriaLabel(e, dialog) {
+// make modal visible to screen readers & set aria label for modal window
+function setAriaAttributes(e, dialog) {
+
+    //give the modal window an aria label, according to the plant type that was clicked
     let ariaLabel = e.target.parentElement.previousElementSibling.innerHTML;
 
     // replace the html entity, if present
     if (ariaLabel.includes('&amp;')) {
-        return dialog.setAttribute('aria-label', `All ${ariaLabel}`.replace('&amp;', '&'));
-    }
+        dialog.setAttribute('aria-label', `All ${ariaLabel}`.replace('&amp;', '&'));
 
-    return dialog.setAttribute('aria-label', `All ${ariaLabel}`);
+        dialog.setAttribute('aria-hidden', false);
+    } else {
+        dialog.setAttribute('aria-label', `All ${ariaLabel}`);
+
+        dialog.setAttribute('aria-hidden', false);
+    }
 }
 
+// hide modal from screen readers & remove aria label from modal window
+function removeAriaAttributes(dialog) {
+    dialog.removeAttribute('aria-label');
+    dialog.setAttribute('aria-hidden', true);
 
-function removeAriaLabel(dialog) {
-    return dialog.removeAttribute('aria-label');
 }
 
 
@@ -155,7 +163,7 @@ function handleKeydownEvent(e) {
 
 
 function showModal(e) {
-    setAriaLabel(e, plantsModal);
+    setAriaAttributes(e, plantsModal);
 
     let modalItems = document.querySelectorAll('.modal-item');
 
@@ -164,9 +172,6 @@ function showModal(e) {
 
     // keyframes animation to show the modal content
     modalItems.forEach(value => value.classList.add('show-modal-content'));
-
-    // make the modal visible to screen readers
-    plantsModal.setAttribute('aria-hidden', false);
 
 
     /*
@@ -234,7 +239,7 @@ function clearModal() {
 
 
 function hideModal(e) {
-    removeAriaLabel(plantsModal);
+    removeAriaAttributes(plantsModal);
 
     let modalItems = document.querySelectorAll('.modal-item');
 
@@ -243,9 +248,6 @@ function hideModal(e) {
 
     // css transform translateX closes the modal window
     plantsModal.classList.remove('plants-modal-expanded');
-
-    // hide the modal from screen readers
-    plantsModal.setAttribute('aria-hidden', true);
 
     if (e.type === 'keydown') {
         // return focus to the element that held focus before the modal was open 
