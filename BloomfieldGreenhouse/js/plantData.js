@@ -49,19 +49,21 @@ const plantInfo = (function () {
         ],
         "Vegetables": [
             {
-                "Tomato": [
+                "Tomatoes": [
                     "one",
                     "two",
                     "three",
                     "four",
-                    "five"
+                    "five",
+                    { "Growing Tips": "Dont kill the plant" }
                 ]
             },
             {
-                "Pepper": [
+                "Peppers": [
                     "one",
                     "two",
-                    "three"
+                    "three",
+                    { "Growing Tips": "Water your plants" }
                 ]
             },
             {
