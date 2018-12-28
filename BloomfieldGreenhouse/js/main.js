@@ -63,7 +63,7 @@ function buildModalItemCards(e) {
                 </ul>
                 
                 <details>
-                    <summary>Growing Tips</summary>
+                    <summary class='focusable'>Growing Tips</summary>
                     <p>${growingTips}</p>
                 </details>`
         } else {
@@ -106,8 +106,55 @@ function removeAriaLabel(dialog) {
 }
 
 
-function showModal(e) {
+function handleKeydownEvent(e) {
+    if (e.type === 'keydown') {
+        lastFocusedElement = document.activeElement;
 
+        // make an array of elements that can be tabbed to when modal is open
+        let focusableItems = plantsModal.querySelectorAll('.focusable');
+        focusableItems[0].focus(); // this is the close button
+
+        plantsModal.addEventListener('keydown', function (e) {
+
+            if (focusableItems.length === 1) {
+                if (e.keyCode === 9) {
+                    e.preventDefault()
+                }
+            } else {
+
+                let first = focusableItems[0];
+                let second = focusableItems[1];
+                let last = focusableItems[focusableItems.length - 1];
+
+                last.addEventListener('keydown', function (e) {
+                    if ((e.keyCode === 9) && (!e.shiftKey)) {
+                        e.preventDefault();
+                        first.focus();
+                    }
+                });
+
+                first.addEventListener('keydown', function (e) {
+                    if ((e.keyCode === 9) && (e.shiftKey)) {
+                        e.preventDefault();
+                        last.focus();
+                    }
+                })
+
+                // WHY DID I HAVE TO DO THIS????????
+                second.addEventListener('keydown', function (e) {
+                    if ((e.keyCode === 9) && (e.shiftKey)) {
+                        e.preventDefault();
+                        first.focus();
+                    }
+                })
+            }
+
+        })
+    }
+}
+
+
+function showModal(e) {
     setAriaLabel(e, plantsModal);
 
     let modalItems = document.querySelectorAll('.modal-item');
@@ -121,25 +168,58 @@ function showModal(e) {
     // make the modal visible to screen readers
     plantsModal.setAttribute('aria-hidden', false);
 
+
     /*
         if a keyboard event triggered the modal, 
         1. remember which element was in focus before opening the modal
         2. set focus on the close button when the modal is opened
         3. create a keyboard trap to prevent tabbing outside the modal
     */
+    //handleKeydownEvent(e);
+
     if (e.type === 'keydown') {
         lastFocusedElement = document.activeElement;
 
-        closeModalButton.focus();
+        // make an array of elements that can be tabbed to when modal is open
+        let focusableItems = plantsModal.querySelectorAll('.focusable');
+        focusableItems[0].focus(); // this is the close button
 
         plantsModal.addEventListener('keydown', function (e) {
-            if (e.keyCode === 9) {
-                //e.preventDefault()
-                //TODO: allow user to tab through growing tips and close button only
-                console.log(e.target)
-            }
-        })
 
+            if (focusableItems.length === 1) {
+                if (e.keyCode === 9) {
+                    e.preventDefault()
+                }
+            } else {
+
+                let first = focusableItems[0];
+                let second = focusableItems[1];
+                let last = focusableItems[focusableItems.length - 1];
+
+                last.addEventListener('keydown', function (e) {
+                    if ((e.keyCode === 9) && (!e.shiftKey)) {
+                        e.preventDefault();
+                        first.focus();
+                    }
+                });
+
+                first.addEventListener('keydown', function (e) {
+                    if ((e.keyCode === 9) && (e.shiftKey)) {
+                        e.preventDefault();
+                        last.focus();
+                    }
+                })
+
+                // WHY DID I HAVE TO DO THIS????????
+                second.addEventListener('keydown', function (e) {
+                    if ((e.keyCode === 9) && (e.shiftKey)) {
+                        e.preventDefault();
+                        first.focus();
+                    }
+                })
+            }
+
+        })
     }
 
 }
@@ -197,7 +277,7 @@ plantsContent.addEventListener('click', function (e) {
     if (e.target.classList.value === 'open-modal-alternate') { // .plant-title or .open-modal???
         buildModalItemCards(e);
         showModal(e);
-    } else if (e.target.classList.value === 'close-modal-button') {
+    } else if (e.target.classList.value === 'close-modal-button focusable') {
         hideModal(e)
     }
 });
@@ -214,13 +294,13 @@ plantsContent.addEventListener('keydown', function (e) {
         showModal(e);
 
     } else {  // user can close modal with space (if block), enter or escapse (if/else block)
-        if ((e.target.classList.value === 'close-modal-button') && (e.keyCode === 32)) {
+        if ((e.target.classList.value === 'close-modal-button focusable') && (e.keyCode === 32)) {
             // prevent the default behavior of the space key
             e.preventDefault();
 
             hideModal(e);
 
-        } else if ((e.target.classList.value === 'close-modal-button') && (e.keyCode === 13 || e.keyCode === 27)) {
+        } else if ((e.target.classList.value === 'close-modal-button focusable') && (e.keyCode === 13 || e.keyCode === 27)) {
 
             // prevent the default behavior of enter
             e.preventDefault();
