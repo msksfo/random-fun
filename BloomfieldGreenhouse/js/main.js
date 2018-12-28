@@ -42,24 +42,44 @@ function buildModalItemCards(e) {
     // get the array of plants from the type that was clicked
     let plantsArr = plantData[plantType]; // ie sun, sun / shade, shade
 
-    // loop over the array of plants, and use string templating to build out the cards with the corresponding headers and list items
+    // loop over the array of plants, and use string templating to build out the cards with the corresponding headers, list items, and growing tips when available
     plantsArr.forEach((value, index) => {
         let header = Object.keys(plantsArr[index]);
         let contentArr = Object.values(value);
+        let growingTips = '';
+        let cardContent;
 
-        let cardContent =
-            `<ul>
-                ${contentArr.map(item => {
-                return item.map(value => `<li>${value}</li>`).join('')
-            })}
-             </ul>
-            `;
+        // when present, growing tips will be an object and will be the last item in the contentArr
+        if (typeof contentArr[0][contentArr[0].length - 1] !== 'string') {
+            // if present, get the growing tips
+            growingTips = contentArr[0][contentArr[0].length - 1]['Growing Tips'];
+
+            // use slice to get the array minus growing tips
+            let contentWithoutTips = contentArr[0].slice(0, contentArr[0].length - 1);
+
+            cardContent =
+                `<ul>
+                    ${contentWithoutTips.map(item => `<li>${item}</li>`).join('')}
+                </ul>
+                
+                <details>
+                    <summary>Growing Tips</summary>
+                    <p>${growingTips}</p>
+                </details>`
+        } else {
+            cardContent =
+                `<ul>
+                    ${contentArr.map(item => {
+                    return item.map(value => `<li>${value}</li>`).join('')
+                })}
+                </ul>`
+        }
 
         let modalCard =
             `<div class="modal-item">
                 <h2 class="modal-item-header">${header}</h2>
                 ${cardContent}
-            </div>`;
+            </div`
 
         // add each card to the modal grid div
         modalGrid.innerHTML += modalCard;
@@ -93,9 +113,12 @@ function showModal(e) {
 
         plantsModal.addEventListener('keydown', function (e) {
             if (e.keyCode === 9) {
-                e.preventDefault()
+                //e.preventDefault()
+                //TODO: allow user to tab through growing tips and close button only
+                console.log(e.target)
             }
         })
+
     }
 
 }
