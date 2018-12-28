@@ -366,7 +366,9 @@ header {
     display: flex;
     flex-direction: column;
     background-color: #8dad87;
-
+    background-image: url('../assets/images/swirl.png');
+    background-repeat: repeat;
+    
     transform: scaleX(0);
     transform-origin: top left;
     transition: transform 1s .2s ease-in-out; 
@@ -399,10 +401,35 @@ header {
 }
 
 
+/* growing tips */
+details {
+    padding: 0 1rem 1rem;
+    font-family: fantasy;
+}
+
+summary {
+    padding: 5px 0;
+}
+
+details > summary:focus {
+    outline: #648b70 solid 5px;
+}
+
+details  p {
+    margin-top: 8px;
+    font-family: initial;
+}
+
+
+/* use animations to show/hide modal content, because transitions alone wont work on content created dynamically with js */
 .show-modal-content {
     animation: slideUp 1.3s .7s ease-in-out forwards;
 }
 
+
+.hide-modal-content {
+    animation: slideDown .2s .1s ease-in-out both;
+}
 
 
 @keyframes slideUp {
@@ -419,6 +446,7 @@ header {
     } 
 }
 
+
 @keyframes slideDown {
     0% {
         opacity: 1;
@@ -431,18 +459,6 @@ header {
         opacity: 0;
         visibility: hidden;
     }
-}
-
-.hide-modal-content {
-    /*
-    transform: translateY(60px);
-    visibility: hidden;
-    opacity: 0;
-    transition: all .2s .1s ease-in-out;
-    */
-    
-    animation: slideDown .2s .1s ease-in-out both;
-    
 }
 
 
