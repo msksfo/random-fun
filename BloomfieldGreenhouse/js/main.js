@@ -46,7 +46,7 @@ function buildModalItemCards(e) {
     plantsArr.forEach((value, index) => {
         let header = Object.keys(plantsArr[index]);
         let contentArr = Object.values(value);
-        let growingTips = '';
+        let growingTips;
         let cardContent;
 
         // when present, growing tips will be an object and will be the last item in the contentArr
@@ -88,7 +88,28 @@ function buildModalItemCards(e) {
 }
 
 
+//give the modal window an aria label, according to the plant type that was clicked
+function setAriaLabel(e, dialog) {
+    let ariaLabel = e.target.parentElement.previousElementSibling.innerHTML;
+
+    // replace the html entity, if present
+    if (ariaLabel.includes('&amp;')) {
+        return dialog.setAttribute('aria-label', `All ${ariaLabel}`.replace('&amp;', '&'));
+    }
+
+    return dialog.setAttribute('aria-label', `All ${ariaLabel}`);
+}
+
+
+function removeAriaLabel(dialog) {
+    return dialog.removeAttribute('aria-label');
+}
+
+
 function showModal(e) {
+
+    setAriaLabel(e, plantsModal);
+
     let modalItems = document.querySelectorAll('.modal-item');
 
     // css transform translateX opens the modal window
@@ -133,6 +154,8 @@ function clearModal() {
 
 
 function hideModal(e) {
+    removeAriaLabel(plantsModal);
+
     let modalItems = document.querySelectorAll('.modal-item');
 
     // keyframes animation QUICKLY transitions to hide the modal content when the modal is closed
