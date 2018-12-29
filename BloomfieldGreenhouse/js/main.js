@@ -6,7 +6,7 @@ const logoLink = document.getElementById('logo-link');
 const plantsContent = document.querySelector('.plants-content');
 const plantsModal = document.querySelector('.plants-modal');
 //let modalItems = document.querySelectorAll('.modal-item');
-const closeModalButton = document.querySelector('.close-modal-button');
+
 let lastFocusedElement;
 
 
