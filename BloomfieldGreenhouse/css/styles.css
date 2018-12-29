@@ -8,14 +8,17 @@
     box-sizing: border-box;
 }
 
+
 a {
     text-decoration: none;
 }
+
 
 h2 {
     font-weight: 500;
     text-align: center;
 }
+
 
 :root {
     --dark-gray: #333;
@@ -25,6 +28,7 @@ h2 {
     --not-white: #f7f7f7;
 }
 
+
 body {
     margin-top: 0;
     font-size: 1rem;
@@ -32,14 +36,17 @@ body {
     line-height: 1.4;
 }
 
+
 .container {
     max-width: 1280px;
     margin: 0 auto;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
+
 
 /* ================================================================ */
 /*                       Header Section                             */
@@ -105,6 +112,7 @@ header {
    display: none;
 }
 
+
 .nav-list {
     list-style: none;
     margin: 0;
@@ -149,8 +157,6 @@ header {
 }
 
 
-
-
 /* ========================= Hero Image ======================== */
 
 .hero-image {
@@ -172,9 +178,11 @@ header {
     background-color: var(--not-white);
 }
 
+
 .section-header {
    font-size: 1.8rem;
 }
+
 
 .about-content {
     background-color: white;
@@ -184,14 +192,17 @@ header {
     border: 2px solid var(--green);
 }
 
+
 .profile-figure {
     margin: 0;
     max-width: 100%;
 }
 
+
 .profile-pic {
     max-width: 100%;
 }
+
 
 .signature {
     font-family: cursive;
@@ -199,9 +210,16 @@ header {
     letter-spacing: 1.1px;
 }
 
+
 .about-text {
     font-size: 1.1rem;
     line-height: 1.4;
+}
+
+
+/* this highlights the hashtag */
+mark {
+    background-color: #fdecaa;
 }
 
 
@@ -226,6 +244,7 @@ header {
     height: 100%;
     object-fit: cover;
 }
+
 
 /* ==== quote ===== */
 .quote-wrapper {
@@ -261,6 +280,7 @@ header {
     margin-bottom: calc(3rem + 20px);
     position: relative;
 }
+
 
 .plant-title {
     padding: 0 .3rem;
@@ -302,11 +322,13 @@ header {
     
 }
 
+
 .open-modal:hover {
     cursor: pointer;
 
      background: radial-gradient(50% 50% at 50% 50%, #faffd1 0%, var(--lighter-green) 100%) no-repeat 50% 50% / 100% 100%;
 }
+
 
 .open-modal-alternate {
     border: none;
@@ -319,10 +341,12 @@ header {
     transition: all .25s ease;
 }
 
+
 .greater-than-symbol {
     margin-left: 2px;
     visibility: hidden;
 }
+
 
 .open-modal-alternate:hover, .open-modal-alternate:focus {
     padding: 2px 8px;
@@ -331,11 +355,10 @@ header {
     background: radial-gradient(50% 50% at 50% 50%, #faffd1 0%, #6db148 100%) no-repeat 50% 50% / 100% 100%;
 }
 
+
 .open-modal-alternate:hover .greater-than-symbol, .open-modal-alternate:focus .greater-than-symbol {
     visibility: visible;
 }
-
-
 
 
 /* create a gradient as bottom border */
@@ -353,6 +376,7 @@ header {
 .no-pseudo-elem:after {
     content: none;
 }
+
 
 /* =============================================================== */
 /*                      Plant Modals                               */
@@ -388,7 +412,6 @@ header {
 }
 
 
-
 .modal-item-header {
     margin: 0;
     padding: 19.920px 0;
@@ -410,6 +433,7 @@ details {
     font-family: fantasy; /* TODO: this is not nice on pc.  why? choose another? */
 }
 
+
 summary {
     padding: 5px;
 }
@@ -430,6 +454,7 @@ details  p {
 .show-modal-content {
     animation: slideUp 1.3s .7s ease-in-out forwards;
 }
+
 
 /* TODO: add a longer animation delay on each subsequent card??? */
 
@@ -479,12 +504,14 @@ details  p {
     transition: all .3s ease;
 }
 
+
 .close-modal-button:hover, .close-modal-button:focus {
     background-color: var(--flower-yellow);
     cursor: pointer;
     border-radius: 5px;
     border: 3px solid white;
 }
+
 
 .left-arrow {
     font-size: 1.1rem;
@@ -583,6 +610,7 @@ details  p {
     color: var(--lighter-green);
 }
 
+
 .icon-wrapper > a:hover, .icon-wrapper > a:focus {
   border: 3px solid var(--lighter-green);
 }
@@ -593,6 +621,7 @@ details  p {
     color: white;
     letter-spacing: 1.2px;
 }
+
 
 .info-link:hover {
    text-decoration: underline;
