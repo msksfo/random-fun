@@ -828,8 +828,11 @@ footer p {
         margin-top: 0;
     }
 
-    .about-text, .gifts-text{
+    .about-text, .gifts-text {
         padding: 0 2rem;
+    }
+
+    .gifts-text {
         text-align: center;
     }
 
