@@ -110,55 +110,62 @@ function setAriaAttributes(e, dialog) {
 function removeAriaAttributes(dialog) {
     dialog.removeAttribute('aria-label');
     dialog.setAttribute('aria-hidden', true);
-
 }
 
 
+// take in the array of focusable items in the modal window, and create a loop to to prevent tabbing outside of these elements 
+function createKeyboardTrap(arr, e) {
+    let first = arr[0];
+    let second = arr[1];
+    let last = arr[arr.length - 1];
+
+    last.addEventListener('keydown', function (e) {
+        if ((e.keyCode === 9) && (!e.shiftKey)) {
+            e.preventDefault();
+            first.focus();
+        }
+    });
+
+    first.addEventListener('keydown', function (e) {
+        if ((e.keyCode === 9) && (e.shiftKey)) {
+            e.preventDefault();
+            last.focus();
+        }
+    })
+
+    // WHY DID I HAVE TO DO THIS????????
+    second.addEventListener('keydown', function (e) {
+        if ((e.keyCode === 9) && (e.shiftKey)) {
+            e.preventDefault();
+            first.focus();
+        }
+    })
+}
+
+
+/*
+    when a keyboard event triggered the modal,
+    1. remember which element was in focus before opening the modal
+    2. set focus on the close button when the modal is opened
+    3. use keyboard trap to prevent tabbing outside the modal
+*/
 function handleKeydownEvent(e) {
-    if (e.type === 'keydown') {
-        lastFocusedElement = document.activeElement;
+    lastFocusedElement = document.activeElement;
 
-        // make an array of elements that can be tabbed to when modal is open
-        let focusableItems = plantsModal.querySelectorAll('.focusable');
-        focusableItems[0].focus(); // this is the close button
+    // make an array of elements that can be tabbed to when modal is open
+    let focusableItems = plantsModal.querySelectorAll('.focusable');
 
-        plantsModal.addEventListener('keydown', function (e) {
+    focusableItems[0].focus();
 
-            if (focusableItems.length === 1) {
-                if (e.keyCode === 9) {
-                    e.preventDefault()
-                }
-            } else {
-
-                let first = focusableItems[0];
-                let second = focusableItems[1];
-                let last = focusableItems[focusableItems.length - 1];
-
-                last.addEventListener('keydown', function (e) {
-                    if ((e.keyCode === 9) && (!e.shiftKey)) {
-                        e.preventDefault();
-                        first.focus();
-                    }
-                });
-
-                first.addEventListener('keydown', function (e) {
-                    if ((e.keyCode === 9) && (e.shiftKey)) {
-                        e.preventDefault();
-                        last.focus();
-                    }
-                })
-
-                // WHY DID I HAVE TO DO THIS????????
-                second.addEventListener('keydown', function (e) {
-                    if ((e.keyCode === 9) && (e.shiftKey)) {
-                        e.preventDefault();
-                        first.focus();
-                    }
-                })
+    plantsModal.addEventListener('keydown', function (e) {
+        if (focusableItems.length === 1) {
+            if (e.keyCode === 9) {
+                e.preventDefault()
             }
-
-        })
-    }
+        } else {
+            createKeyboardTrap(focusableItems, e);
+        }
+    })
 }
 
 
@@ -173,60 +180,9 @@ function showModal(e) {
     // keyframes animation to show the modal content
     modalItems.forEach(value => value.classList.add('show-modal-content'));
 
-
-    /*
-        if a keyboard event triggered the modal, 
-        1. remember which element was in focus before opening the modal
-        2. set focus on the close button when the modal is opened
-        3. create a keyboard trap to prevent tabbing outside the modal
-    */
-    //handleKeydownEvent(e);
-
     if (e.type === 'keydown') {
-        lastFocusedElement = document.activeElement;
-
-        // make an array of elements that can be tabbed to when modal is open
-        let focusableItems = plantsModal.querySelectorAll('.focusable');
-        focusableItems[0].focus(); // this is the close button
-
-        plantsModal.addEventListener('keydown', function (e) {
-
-            if (focusableItems.length === 1) {
-                if (e.keyCode === 9) {
-                    e.preventDefault()
-                }
-            } else {
-
-                let first = focusableItems[0];
-                let second = focusableItems[1];
-                let last = focusableItems[focusableItems.length - 1];
-
-                last.addEventListener('keydown', function (e) {
-                    if ((e.keyCode === 9) && (!e.shiftKey)) {
-                        e.preventDefault();
-                        first.focus();
-                    }
-                });
-
-                first.addEventListener('keydown', function (e) {
-                    if ((e.keyCode === 9) && (e.shiftKey)) {
-                        e.preventDefault();
-                        last.focus();
-                    }
-                })
-
-                // WHY DID I HAVE TO DO THIS????????
-                second.addEventListener('keydown', function (e) {
-                    if ((e.keyCode === 9) && (e.shiftKey)) {
-                        e.preventDefault();
-                        first.focus();
-                    }
-                })
-            }
-
-        })
+        handleKeydownEvent(e);
     }
-
 }
 
 
