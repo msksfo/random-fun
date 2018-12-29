@@ -368,7 +368,6 @@ header {
     background-color: #8dad87;
     background-image: url('../assets/images/swirl.png');
     background-repeat: repeat;
-    
     transform: scaleX(0);
     transform-origin: top left;
     transition: transform 1s .2s ease-in-out; 
@@ -378,6 +377,7 @@ header {
 .plants-modal-expanded {
     transform: scaleX(1);
 }
+
 
 .modal-grid {
     display: grid;
@@ -394,6 +394,7 @@ header {
     color: white;
 }
 
+
 .modal-item {
     background-color: white;
     visibility: hidden;
@@ -404,16 +405,18 @@ header {
 /* growing tips */
 details {
     padding: 0 1rem 1rem;
-    font-family: fantasy;
+    font-family: fantasy; /* TODO: this is not nice on pc.  why? choose another? */
 }
 
 summary {
-    padding: 5px 0;
+    padding: 5px;
 }
 
+/*
 details > summary:focus {
     outline: #648b70 solid 5px;
 }
+*/
 
 details  p {
     margin-top: 8px;
@@ -426,6 +429,7 @@ details  p {
     animation: slideUp 1.3s .7s ease-in-out forwards;
 }
 
+/* TODO: add a longer animation delay on each subsequent card??? */
 
 .hide-modal-content {
     animation: slideDown .2s .1s ease-in-out both;
@@ -534,7 +538,7 @@ details  p {
 }
 
 
-.method-wrapper {
+.contact-method-wrapper {
     background: rgba(0, 0, 0, .7);
     padding: 2rem 1rem;
     display: flex;
@@ -552,6 +556,16 @@ details  p {
     width: 80px;
     border-radius: 50%;
     background-color: white;
+}
+
+
+/* make the anchor tag wrapping around the icon 100% height/width of parent. center the icon */
+.icon-wrapper > a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -658,7 +672,7 @@ footer p {
         display: flex;
     }
 
-    .method-wrapper {
+    .contact-method-wrapper {
         flex: 1;
         flex-direction: column;
     }
