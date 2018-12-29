@@ -2,7 +2,9 @@
 /*                       Global Styles                              */
 /*==================================================================*/
 
-* {
+*, 
+*:before,
+*:after  {
     box-sizing: border-box;
 }
 
@@ -566,6 +568,7 @@ details  p {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 50%;
 }
 
 
@@ -575,10 +578,26 @@ details  p {
 }
 
 
+/* hover/focus state color for telephone and fb icons */
+.icon-wrapper > a:hover .icon, .icon-wrapper > a:focus .icon {
+    color: var(--lighter-green);
+}
+
+.icon-wrapper > a:hover, .icon-wrapper > a:focus {
+  border: 3px solid var(--lighter-green);
+}
+
+
 .info {
     font-size: 1.1rem;
     color: white;
     letter-spacing: 1.2px;
+}
+
+.info-link:hover {
+   text-decoration: underline;
+   text-underline-position: under;
+   text-decoration-color: var(--lighter-green);
 }
 
 /* ======= the map ======= */
@@ -691,17 +710,21 @@ footer p {
         display: flex;
     }
 
+
     .planting-zone {
         text-align: left;
     }
+
 
     .mobile-icon {
         display: none;
     }
 
+
     .full-width-nav {
         display: block;
     }
+
 
     .hero-image {
         background-attachment: fixed;
@@ -713,9 +736,11 @@ footer p {
         grid-template-columns: 1fr 2fr;
     }
 
+
     .signature {
         text-align: center;
     }
+
 
     /* === plants ==== */
     .plants-content {
@@ -723,27 +748,33 @@ footer p {
         grid-gap: 1rem;
     }
 
+
     .plant-text:after {
         content: none;
     }
+
 
     .plant-text {
         margin: 0;
         padding: 0 1rem;
     }
 
+
     .bottom {
         border-bottom: 1px solid var(--flower-yellow);
     }
+
 
     .right {
         border-right: 1px solid var(--flower-yellow);
     }
     
+
     .left {
         border-left: 1px solid var(--flower-yellow);
     }
     
+
     .top {
         border-top: 1px solid var(--flower-yellow);
     }
@@ -755,13 +786,13 @@ footer p {
     }
     
 
-
     /* ====== food section ===== */
     .food-content {
         grid-template-columns: 1fr 1fr 1fr;
         border-left: 1px solid var(--green);
         padding-left: 1rem;
     }
+
 
     /* eleminate top margin on first paragraph in text-containers */
     .no-top-margin {
@@ -773,20 +804,24 @@ footer p {
         text-align: center;
     }
 
+
     .list-container {
        display: grid;
        grid-template-columns: 1fr auto 1fr;
     }
 
+
     .section-list {
         grid-column: 2;
     }
+
 
     /* ==== gifts ==== */
     .gifts-text-container {
         display: grid;
         align-items: center;
     }
+
 
     .gifts-text {
         width: 60%;
@@ -795,6 +830,4 @@ footer p {
        border-bottom: 1px solid #6AAA5D;
         padding: 30px 2rem;
     }
-
-    
 }
