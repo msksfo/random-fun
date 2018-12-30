@@ -33,7 +33,7 @@ body {
     margin-top: 0;
     font-size: 1rem;
     color: var(--dark-gray);
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
 
@@ -562,7 +562,7 @@ details  p {
 
 .contact-content {
     background-image: url('../assets/images/greenhouse.jpg');
-    background-repeat: norepeat;
+    background-repeat: no-repeat;
     background-size: cover;
 }
 
