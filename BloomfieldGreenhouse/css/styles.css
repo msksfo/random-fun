@@ -48,6 +48,19 @@ html {
 }
 
 
+/* this span element accounts for the sticky header, and accordingly adjusts the scrolled location of the anchor link */
+
+.nav-offset {
+   display: block;
+   height: 131px;
+   height: 3rem;
+   margin-top: -131px; /* TODO: figure out height/-margin-top for mobile */
+   margin-top: -3rem;
+   visibility: hidden;
+}
+
+
+
 /* ================================================================ */
 /*                       Header Section                             */
 /*==================================================================*/
@@ -708,6 +721,11 @@ footer p {
 @media screen and (min-width: 500px){
     header {
         grid-template-columns: repeat(2, auto);
+    }
+
+    .nav-offset {
+        height: 3rem;
+        margin-top: -3rem;
     }
 
     .planting-zone {
