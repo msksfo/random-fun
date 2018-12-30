@@ -15,7 +15,7 @@
 
 <body>
     <div class='container'>
-        <header>
+        <header class='js-header'>
             <div class='mobile-icon'>
                 <div class='middle'></div>
             </div>
@@ -38,7 +38,9 @@
         <div class='hero-image'></div>
 
         <main>
-            <section class='about' id='about'>
+
+            <span id='about' class='nav-offset'></span>
+            <section class='about anchor'>
                 <h1 class='section-header'>About Us</h1>
                 <div class='about-content'>
                     <figure class='profile-figure'>
@@ -65,9 +67,11 @@
                 </div>
             </section> <!-- close .about -->
 
+
             <section class='products'>
 
-                <section id='plants' class='plants'>
+                <span id='plants' class='nav-offset'></span>
+                <section class='plants'>
                     <h1 class='section-header'>Plants</h1>
                     <div class='flower-border'>
                         <img class='flower' src='assets/images/cropped/prettyFlower.jpg' alt=''>
@@ -167,7 +171,9 @@
 
                 </section> <!-- close .plants -->
 
-                <section id='gifts' class='gifts'>
+
+                <span id='gifts' class='nav-offset'></span>
+                <section class='gifts'>
                     <h1 class='section-header'>Farm Finds</h1>
                     <div class='gifts-content'>
                         <figure class='gifts-figure'>
@@ -183,7 +189,9 @@
 
             </section> <!-- close .products -->
 
-            <section id='contact' class='contact'>
+
+            <span id='contact' class='nav-offset'></span>
+            <section class='contact'>
                 <h1 class='section-header'>Get In Touch</h1>
                 <div class='contact-content'>
                     <div class='contact-info'>
@@ -231,11 +239,14 @@
 
                 </div> <!-- close .contact-content-->
             </section> <!-- close .contact -->
+
         </main>
+
         <footer>
             <p>Copyright &copy; <span class="year"></span> <a class='tangoecho' href='https://msksfo.github.io/TangoEchoDesign/'
                     target='_blank' rel='noopener'>TangoEcho Design</a>. All Rights Reserved</p>
         </footer>
+
     </div> <!-- close .container -->
 
     <script src='js/plantData.js'></script>
