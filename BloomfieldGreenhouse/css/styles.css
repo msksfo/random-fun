@@ -49,16 +49,12 @@ html {
 
 
 /* this span element accounts for the sticky header, and accordingly adjusts the scrolled location of the anchor link */
-
 .nav-offset {
-   display: block;
-   height: 131px;
-   height: 3rem;
-   margin-top: -131px; /* TODO: figure out height/-margin-top for mobile */
-   margin-top: -3rem;
+   display: block; 
+   height: 6rem;
+   margin-top: -6rem;
    visibility: hidden;
 }
-
 
 
 /* ================================================================ */
