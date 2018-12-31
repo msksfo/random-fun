@@ -130,6 +130,7 @@ header {
    transition: all .2s ease;
 }
 
+
 /* ===== Mobile Navigation ===== */
 .mobile-nav {
     position: fixed;
@@ -161,7 +162,8 @@ header {
     transition: all .25s ease;
 }
 
-.mobile-nav a:hover {
+
+.mobile-nav a:hover, .mobile-nav a:focus {
     background-color: #fff;
     color: var(--green);
     transform: scale(1.05);
@@ -538,7 +540,6 @@ details  p {
 
 
 /* TODO: add a longer animation delay on each subsequent card??? */
-
 .hide-modal-content {
     animation: slideDown .2s .1s ease-in-out both;
 }
@@ -945,8 +946,8 @@ footer p {
     .gifts-text {
         width: 60%;
         margin: 0 auto;
-       border-top: 1px solid #6AAA5D;
-       border-bottom: 1px solid #6AAA5D;
+        border-top: 1px solid #6AAA5D;
+        border-bottom: 1px solid #6AAA5D;
         padding: 30px 2rem;
     }
 }
