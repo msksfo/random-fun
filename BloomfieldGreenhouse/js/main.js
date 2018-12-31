@@ -27,6 +27,25 @@ function setCurrentYear() {
 }
 
 
+// show mobile menu
+function showMobileMenu() {
+    mobileMenu.style.width = '300px';
+    mobileMenu.setAttribute('aria-hidden', false);
+    hamburgerIcon.setAttribute('aria-expanded', true);
+}
+
+
+// close the mobile menu if user clicks 'x', or any in page anchor link
+function hideMobileMenu(e) {
+    // conditional ensures user specifically clicked the close button or an anchor link
+    if (e.target.classList.value.includes('mobile-nav-link') || e.target.classList.value.includes('close-mobileNav-button')) {
+        mobileMenu.style.width = '0';
+        mobileMenu.setAttribute('aria-hidden', true);
+        hamburgerIcon.setAttribute('aria-expanded', false);
+    }
+}
+
+
 // get the plant data, to be used in the modal items when the plants modal is opened
 function getPlantData(dataObject) {
     return dataObject;
@@ -283,21 +302,11 @@ plantsContent.addEventListener('transitionend', function (e) {
 });
 
 
-hamburgerIcon.addEventListener('click', function () {
-    mobileMenu.style.width = '300px';
-    mobileMenu.setAttribute('aria-hidden', false);
-    hamburgerIcon.setAttribute('aria-expanded', true);
-});
+hamburgerIcon.addEventListener('click', showMobileMenu);
 
 
-// close the mobile menu if user clicks 'x', or any in page anchor link
 mobileMenu.addEventListener('click', function (e) {
-    // conditional ensures user specifically clicked the close button or an anchor link
-    if (e.target.classList.value.includes('mobile-nav-link') || e.target.classList.value.includes('close-mobileNav-button')) {
-        mobileMenu.style.width = '0';
-        mobileMenu.setAttribute('aria-hidden', true);
-        hamburgerIcon.setAttribute('aria-expanded', false);
-    }
+    hideMobileMenu(e)
 });
 
 
