@@ -2,6 +2,8 @@
 
 /******* VARIABLES ********/
 const logoLink = document.getElementById('logo-link');
+const hamburgerIcon = document.querySelector('#js-mobile-icon');
+const mobileMenu = document.querySelector('#js-mobile-nav');
 
 const plantsContent = document.querySelector('.plants-content');
 const plantsModal = document.querySelector('.plants-modal');
@@ -16,7 +18,6 @@ let lastFocusedElement;
 function scrollToTop() {
     window.scroll(0, 0)
 }
-
 
 // So the copyright date will always be the current year
 function setCurrentYear() {
@@ -269,7 +270,6 @@ plantsContent.addEventListener('keydown', function (e) {
 });
 
 
-
 /*
     when the transition to close the modal window (by removing the class .plants-modal-expanded) is complete, clear all html content from the modal
 */
@@ -282,5 +282,36 @@ plantsContent.addEventListener('transitionend', function (e) {
 
 });
 
+
+hamburgerIcon.addEventListener('click', function () {
+    mobileMenu.style.width = '300px';
+    mobileMenu.setAttribute('aria-hidden', false);
+    hamburgerIcon.setAttribute('aria-expanded', true);
+});
+
+
+// close the mobile menu if user clicks 'x', or any in page anchor link
+mobileMenu.addEventListener('click', function (e) {
+    // conditional ensures user specifically clicked the close button or an anchor link
+    if (e.target.classList.value.includes('mobile-nav-link') || e.target.classList.value.includes('close-mobileNav-button')) {
+        mobileMenu.style.width = '0';
+        mobileMenu.setAttribute('aria-hidden', true);
+        hamburgerIcon.setAttribute('aria-expanded', false);
+    }
+});
+
+
+// user can close the mobile menu by clicking anywhere outside of it
+document.body.addEventListener('click', function (e) {
+    // make sure they are not trying to open the mobile menu
+    if (e.target !== hamburgerIcon) {
+        // make sure the mobile menu is open
+        if ((e.target !== mobileMenu) && (mobileMenu.style.width > '0')) {
+            mobileMenu.style.width = '0';
+            mobileMenu.setAttribute('aria-hidden', true);
+            hamburgerIcon.setAttribute('aria-expanded', false);
+        }
+    }
+});
 
 main();
