@@ -111,12 +111,84 @@ header {
     width: 35px;
     border-top: 6px solid var(--dark-gray);
     border-bottom: 6px solid var(--dark-gray);
+    transition: all .2s ease;
 }
+
+
+.mobile-icon:hover, .mobile-icon:focus {
+    border-top: 6px solid var(--green);
+    border-bottom: 6px solid var(--green);
+    cursor: pointer;
+}
+
+
+.mobile-icon:hover .middle, .mobile-icon:focus .middle {
+   background-color: var(--green);
+}
+
 
 .middle {
    width: 35px;
    height: 6px;
    background-color: var(--dark-gray);
+   transition: all .2s ease;
+}
+
+/* ===== Mobile Navigation ===== */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: var(--green);
+    opacity: .925;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: all .4s;
+}
+
+
+/* the ul styles */
+.mobile-nav-list {
+    list-style: none;
+    padding: 0;
+}
+
+
+.mobile-nav a {
+    color: #fff;
+    display: block;
+    transition: .3s;
+    padding: 10px 10px 10px 20px;
+    font-size: 1.3rem;
+    transition: all .25s ease;
+}
+
+.mobile-nav a:hover {
+    background-color: #fff;
+    color: var(--green);
+    transform: scale(1.05);
+}
+
+
+.close-mobileNav-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #fff;
+    color: var(--green);
+    font-size: 1.3rem;
+    padding: 10px 15px;
+    border-radius: 50%;
+    transition: all .2s ease;
+}
+
+
+.close-mobileNav-button:hover, .close-mobileNav-button:focus {
+    cursor: pointer;
+    background-color: var(--flower-yellow);
+    color: var(--dark-gray);
 }
 
 
@@ -753,6 +825,7 @@ footer p {
 
 @media screen and (min-width: 780px){
     /* ==== header/navigation ==== */
+
     header {
         display: flex;
     }
@@ -763,7 +836,7 @@ footer p {
     }
 
 
-    .mobile-icon {
+    .mobile-icon, .mobile-nav {
         display: none;
     }
 
