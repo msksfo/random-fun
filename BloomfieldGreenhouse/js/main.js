@@ -10,13 +10,14 @@ const plantsModal = document.querySelector('.plants-modal');
 //let modalItems = document.querySelectorAll('.modal-item');
 
 let lastFocusedElement;
+let lastYposition;
 
 
 
 /******** FUNCTIONS ********/
 
 function scrollToTop() {
-    window.scroll(0, 0)
+    window.scroll(0, 0);
 }
 
 // So the copyright date will always be the current year
@@ -189,6 +190,16 @@ function handleKeydownEvent(e) {
 }
 
 
+function scrollToTopOfModal() {
+    let yPosition = plantsModal.getBoundingClientRect().y;
+    lastYposition = yPosition;
+
+    // get viewport width and scroll to top of modal window, adjusted for sticky header height
+    let mq = window.matchMedia("(min-width: 500px)");
+    mq.matches ? window.scrollBy(0, yPosition - 95) : window.scrollBy(0, yPosition - 131);
+}
+
+
 function showModal(e) {
     setAriaAttributes(e, plantsModal);
 
@@ -196,6 +207,8 @@ function showModal(e) {
 
     // css transform translateX opens the modal window
     plantsModal.classList.add('plants-modal-expanded');
+
+    //scrollToTopOfModal();
 
     // keyframes animation to show the modal content
     modalItems.forEach(value => value.classList.add('show-modal-content'));
@@ -231,6 +244,11 @@ function hideModal(e) {
     }
 }
 
+function returnToPagePosition() {
+    // scroll to where the user was before opening the modal, adjusted for sticky header height
+    let mq = window.matchMedia("(min-width: 500px)");
+    mq.matches ? window.scrollBy(0, Math.abs(lastYposition) + 95) : window.scrollBy(0, Math.abs(lastYposition) + 131);
+}
 
 function main() {
     setCurrentYear();
@@ -240,23 +258,26 @@ function main() {
 
 /******** EVENT LISTENERS ********/
 
-logoLink.addEventListener('click', scrollToTop);
+logoLink.addEventListener('click', function () {
+    scrollToTop();
+});
 
 logoLink.addEventListener('keydown', function (e) {
     if (e.keyCode === 13) {
-        window.scroll(0, 0);
+        scrollToTop();
     }
 });
 
 
 plantsContent.addEventListener('click', function (e) {
-
     // make sure the animation is only triggered if the open modal button was clicked
-    if (e.target.classList.value === 'open-modal-alternate') { // .plant-title or .open-modal???
+    if (e.target.classList.value === 'open-modal-alternate') { // .plant-title or .open-modal???    
         buildModalItemCards(e);
         showModal(e);
+        scrollToTopOfModal();
     } else if (e.target.classList.value === 'close-modal-button focusable') {
-        hideModal(e)
+        hideModal(e);
+        //returnToPagePosition();
     }
 });
 
@@ -270,6 +291,7 @@ plantsContent.addEventListener('keydown', function (e) {
 
         buildModalItemCards(e);
         showModal(e);
+        scrollToTopOfModal();
 
     } else {  // user can close modal with space (if block), enter or escapse (if/else block)
         if ((e.target.classList.value === 'close-modal-button focusable') && (e.keyCode === 32)) {
@@ -290,19 +312,21 @@ plantsContent.addEventListener('keydown', function (e) {
 
 
 /*
-    when the transition to close the modal window (by removing the class .plants-modal-expanded) is complete, clear all html content from the modal
+when the transition to close the modal window (by removing the class .plants-modal-expanded) is complete, clear all html content from the modal
 */
 plantsContent.addEventListener('transitionend', function (e) {
-
     // conditionals to ensure the event only fires on the intended transition
     if (e.propertyName === 'transform' && e.target.classList.value === 'plants-modal') {
-        clearModal()
+        clearModal();
+        //returnToPagePosition();
     }
-
 });
 
 
 hamburgerIcon.addEventListener('click', showMobileMenu);
+hamburgerIcon.addEventListener('keydown', showMobileMenu);
+
+//TODO: make mobile menu work for keydown events
 
 
 mobileMenu.addEventListener('click', function (e) {
