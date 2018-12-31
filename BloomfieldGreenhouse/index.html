@@ -16,9 +16,19 @@
 <body>
     <div class='container'>
         <header>
-            <div class='mobile-icon'>
+            <div aria-controls='js-modbile-nav' aria-expanded='false' role='button' tabindex='0' class='mobile-icon' id='js-mobile-icon'>
                 <div class='middle'></div>
             </div>
+
+            <nav aria-hidden='true' class='mobile-nav' id='js-mobile-nav'>
+                <button class='close-mobileNav-button'>X</button>
+                <ul class='mobile-nav-list'>
+                    <li><a class='mobile-nav-link' href='#about'>About</a></li>
+                    <li><a class='mobile-nav-link' href='#plants'>Plants</a></li>
+                    <li><a class='mobile-nav-link' href='#gifts'>Farm Finds</a></li>
+                    <li><a class='mobile-nav-link' href='#contact'>Contact</a></li>
+                </ul>
+            </nav>
 
             <div class='logo'>
                 <a tabindex='0' id='logo-link' class='logo-link'>Bloomfield Greenhouse</a>
