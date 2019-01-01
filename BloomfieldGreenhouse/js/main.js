@@ -54,7 +54,6 @@ function getPlantData(dataObject) {
 
 
 function buildModalItemCards(e) {
-    console.log(e)
     const plantData = getPlantData(plantInfo);
     const modalGrid = document.querySelector('.modal-grid');
 
@@ -137,6 +136,8 @@ function removeAriaAttributes(dialog) {
 
 // take in the array of focusable items in the modal window, and create a loop to to prevent tabbing outside of these elements 
 function createKeyboardTrap(arr, e) {
+    console.log(arr);
+
     let first = arr[0];
     let second = arr[1];
     let last = arr[arr.length - 1];
