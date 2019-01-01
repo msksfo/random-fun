@@ -400,6 +400,7 @@ mark {
     padding: 8px 12px;
     outline: none;
     border: 1px solid var(--lighter-green);
+    background-color: #fff;
 
      /* stick the button to the bottom of it's parent container */
      margin: auto 0 1.25rem 0;
