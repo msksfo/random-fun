@@ -54,11 +54,12 @@ function getPlantData(dataObject) {
 
 
 function buildModalItemCards(e) {
+    console.log(e)
     const plantData = getPlantData(plantInfo);
     const modalGrid = document.querySelector('.modal-grid');
 
     // get the h2 corresponding to the button that was clicked (flowers, herbs, etc)
-    let plantType = e.target.parentElement.previousElementSibling.innerHTML;
+    let plantType = e.target.parentElement.children[0].innerHTML;
 
     // get the array of plants from the type that was clicked
     let plantsArr = plantData[plantType]; // ie sun, sun / shade, shade
@@ -113,7 +114,7 @@ function buildModalItemCards(e) {
 function setAriaAttributes(e, dialog) {
 
     //give the modal window an aria label, according to the plant type that was clicked
-    let ariaLabel = e.target.parentElement.previousElementSibling.innerHTML;
+    let ariaLabel = e.target.parentElement.children[0].innerHTML;
 
     // replace the html entity, if present
     if (ariaLabel.includes('&amp;')) {
@@ -208,8 +209,6 @@ function showModal(e) {
     // css transform translateX opens the modal window
     plantsModal.classList.add('plants-modal-expanded');
 
-    //scrollToTopOfModal();
-
     // keyframes animation to show the modal content
     modalItems.forEach(value => value.classList.add('show-modal-content'));
 
@@ -250,6 +249,7 @@ function returnToPagePosition() {
     mq.matches ? window.scrollBy(0, Math.abs(lastYposition) + 95) : window.scrollBy(0, Math.abs(lastYposition) + 131);
 }
 
+
 function main() {
     setCurrentYear();
 }
@@ -271,7 +271,7 @@ logoLink.addEventListener('keydown', function (e) {
 
 plantsContent.addEventListener('click', function (e) {
     // make sure the animation is only triggered if the open modal button was clicked
-    if (e.target.classList.value === 'open-modal-alternate') { // .plant-title or .open-modal???    
+    if (e.target.classList.value === 'open-modal') {
         buildModalItemCards(e);
         showModal(e);
         scrollToTopOfModal();
@@ -285,7 +285,7 @@ plantsContent.addEventListener('click', function (e) {
 plantsContent.addEventListener('keydown', function (e) {
 
     // user can open the modal by pressing 'enter', or the space bar
-    if ((e.target.classList.value === 'open-modal-alternate') && (e.keyCode === 13 || e.keyCode === 32)) {
+    if ((e.target.classList.value === 'open-modal') && (e.keyCode === 13 || e.keyCode === 32)) {
         // prevent default behavior of enter and space
         e.preventDefault();
 
@@ -318,7 +318,7 @@ plantsContent.addEventListener('transitionend', function (e) {
     // conditionals to ensure the event only fires on the intended transition
     if (e.propertyName === 'transform' && e.target.classList.value === 'plants-modal') {
         clearModal();
-        //returnToPagePosition();
+        // returnToPagePosition(); TODO: decide if/when i should use this
     }
 });
 
