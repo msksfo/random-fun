@@ -482,19 +482,14 @@ mark {
 /* growing tips */
 details {
     padding: 0 1rem 1rem;
-    font-family: fantasy; /* TODO: this is not nice on pc.  why? choose another? */
 }
 
 
 summary {
     padding: 5px;
+    font-style: italic;
 }
 
-/*
-details > summary:focus {
-    outline: #648b70 solid 5px;
-}
-*/
 
 details  p {
     margin-top: 8px;
