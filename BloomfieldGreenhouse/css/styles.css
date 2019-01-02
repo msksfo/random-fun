@@ -143,6 +143,8 @@ header {
     overflow-x: hidden;
     padding-top: 60px;
     transition: all .4s;
+    opacity: 0;
+    visibility: hidden;
 }
 
 
