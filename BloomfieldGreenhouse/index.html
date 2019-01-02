@@ -16,13 +16,16 @@
 <body>
     <div class='container'>
         <header>
-            <div aria-label='Navigation Menu' aria-controls='js-mobile-nav' aria-expanded='false' role='button'
+            <!-- hamburger icon to toggle mobile navigation-->
+            <div aria-label='Mobile Navigation Trigger' aria-controls='js-mobile-nav' aria-expanded='false' role='button'
                 tabindex='0' class='mobile-icon' id='js-mobile-icon'>
                 <div class='middle'></div>
             </div>
 
+            <!-- mobile navigation -->
             <nav aria-hidden='true' class='mobile-nav' id='js-mobile-nav'>
-                <button class='close-mobileNav-button'>X</button>
+                <button aria-label='Close mobile navigation' class='close-mobileNav-button'>X</button>
+
                 <ul class='mobile-nav-list'>
                     <li><a class='mobile-nav-link' href='#about'>About</a></li>
                     <li><a class='mobile-nav-link' href='#plants'>Plants</a></li>
