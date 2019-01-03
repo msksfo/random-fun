@@ -143,8 +143,9 @@ header {
     overflow-x: hidden;
     padding-top: 60px;
     transition: all .4s;
+    
     opacity: 0;
-    visibility: hidden;
+    visibility: hidden; 
 }
 
 
@@ -182,6 +183,7 @@ header {
     padding: 10px 15px;
     border-radius: 50%;
     transition: all .2s ease;
+    border: none;
 }
 
 
