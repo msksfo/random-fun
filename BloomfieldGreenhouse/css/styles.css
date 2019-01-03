@@ -148,6 +148,12 @@ header {
     visibility: hidden; 
 }
 
+.isOpen {
+    width: 300px;
+    opacity: 1;
+    visibility: visible;
+}
+
 
 /* the ul styles */
 .mobile-nav-list {
