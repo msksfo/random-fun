@@ -8,6 +8,7 @@ const mobileMenu = document.querySelector('#js-mobile-nav');
 const plantsContent = document.querySelector('.plants-content');
 const plantsModal = document.querySelector('.plants-modal');
 //let modalItems = document.querySelectorAll('.modal-item');
+let closeModalButton = document.querySelector('.close-modal-button');
 
 let lastFocusedElement;
 let lastYposition;
@@ -29,20 +30,63 @@ function setCurrentYear() {
 
 
 // show mobile menu
-function showMobileMenu() {
-    mobileMenu.style.width = '300px';
-    mobileMenu.setAttribute('aria-hidden', false);
-    hamburgerIcon.setAttribute('aria-expanded', true);
+function showMobileMenu(e) {
+    let closeButton = document.querySelector('.close-mobileNav-button');
+
+    if (e.type === 'keydown') {
+        if (e.keyCode === 13 || e.keyCode === 32) {
+            e.preventDefault();
+            setMobileMenuStyles();
+
+            closeButton.focus(); // TODO: why is this not working?????
+        }
+    } else {
+        setMobileMenuStyles();
+    }
+
 }
 
 
-// close the mobile menu if user clicks 'x', or any in page anchor link
+function setMobileMenuStyles() {
+    mobileMenu.style.width = '300px';
+    mobileMenu.setAttribute('aria-hidden', false);
+    hamburgerIcon.setAttribute('aria-expanded', true);
+
+    mobileMenu.style.opacity = '1';
+    mobileMenu.style.visibility = 'visible';
+}
+
+
+function removeMobileMenuStyles() {
+    mobileMenu.style.width = '0';
+    mobileMenu.setAttribute('aria-hidden', true);
+    hamburgerIcon.setAttribute('aria-expanded', false);
+
+    mobileMenu.style.opacity = '0';
+    mobileMenu.style.visibility = 'hidden';
+}
+
+
+// close the mobile menu if user clicks / tabs on 'x', or any in page anchor link
 function hideMobileMenu(e) {
-    // conditional ensures user specifically clicked the close button or an anchor link
-    if (e.target.classList.value.includes('mobile-nav-link') || e.target.classList.value.includes('close-mobileNav-button')) {
-        mobileMenu.style.width = '0';
-        mobileMenu.setAttribute('aria-hidden', true);
-        hamburgerIcon.setAttribute('aria-expanded', false);
+    // conditionals ensure user specifically clicked the close button or an anchor link
+    if (e.type === 'keydown') { // for keyboard events
+
+        // enter / space on the button to close the mobile menu
+        if (e.target.classList.value.includes('close-mobileNav-button')) {
+            removeMobileMenuStyles();
+
+            //TODO: why is this not working????
+            hamburgerIcon.focus(); // put focus back where it was before mobile menu was opened
+
+        } else if (e.target.classList.value.includes('mobile-nav-link')) {
+            // enter on in page anchor link
+            removeMobileMenuStyles();
+        }
+    } else { // for click events
+        if (e.target.classList.value.includes('close-mobileNav-button') || e.target.classList.value.includes('mobile-nav-link')) {
+            removeMobileMenuStyles();
+        }
     }
 }
 
@@ -134,64 +178,26 @@ function removeAriaAttributes(dialog) {
 }
 
 
-// take in the array of focusable items in the modal window, and create a loop to to prevent tabbing outside of these elements 
-function createKeyboardTrap(arr, e) {
-    console.log(arr);
-
-    let first = arr[0];
-    let second = arr[1];
-    let last = arr[arr.length - 1];
-
-    last.addEventListener('keydown', function (e) {
-        if ((e.keyCode === 9) && (!e.shiftKey)) {
-            e.preventDefault();
-            first.focus();
-        }
-    });
-
-    first.addEventListener('keydown', function (e) {
-        if ((e.keyCode === 9) && (e.shiftKey)) {
-            e.preventDefault();
-            last.focus();
-        }
-    })
-
-    // WHY DID I HAVE TO DO THIS????????
-    second.addEventListener('keydown', function (e) {
-        if ((e.keyCode === 9) && (e.shiftKey)) {
-            e.preventDefault();
-            first.focus();
-        }
-    })
-}
-
-
-/*
-    when a keyboard event triggered the modal,
-    1. remember which element was in focus before opening the modal
-    2. set focus on the close button when the modal is opened
-    3. use keyboard trap to prevent tabbing outside the modal
-*/
-function handleKeydownEvent(e) {
+function showModal(e) {
+    // remember which element was in focus before opening the modal
     lastFocusedElement = document.activeElement;
 
-    // make an array of elements that can be tabbed to when modal is open
-    let focusableItems = plantsModal.querySelectorAll('.focusable');
+    setAriaAttributes(e, plantsModal);
 
-    focusableItems[0].focus();
+    // css transform translateX opens the modal window
+    plantsModal.classList.add('plants-modal-expanded');
 
-    plantsModal.addEventListener('keydown', function (e) {
-        if (focusableItems.length === 1) {
-            if (e.keyCode === 9) {
-                e.preventDefault()
-            }
-        } else {
-            createKeyboardTrap(focusableItems, e);
-        }
-    })
+    let modalItems = document.querySelectorAll('.modal-item');
+
+    // keyframes animation to show the modal content
+    modalItems.forEach(value => value.classList.add('show-modal-content'));
+
+    closeModalButton.focus();
 }
 
 
+/* I did this because the modal window covers entire section ->  on mobile, the content might not be     visible which could leave the user confused
+*/
 function scrollToTopOfModal() {
     let yPosition = plantsModal.getBoundingClientRect().y;
     lastYposition = yPosition;
@@ -202,20 +208,26 @@ function scrollToTopOfModal() {
 }
 
 
-function showModal(e) {
-    setAriaAttributes(e, plantsModal);
+// take in the array of focusable items in the modal window, and create a loop to to prevent tabbing outside of these elements 
+function createKeyboardTrap(arr, e) {
 
-    let modalItems = document.querySelectorAll('.modal-item');
+    let first = arr[0]; // this will be the button to close the modal window
+    let last = arr[arr.length - 1];
 
-    // css transform translateX opens the modal window
-    plantsModal.classList.add('plants-modal-expanded');
+    last.addEventListener('keydown', function (e) {
+        if ((e.keyCode === 9) && (!e.shiftKey)) {
+            e.preventDefault();
+            first.focus();
+        }
+    });
 
-    // keyframes animation to show the modal content
-    modalItems.forEach(value => value.classList.add('show-modal-content'));
+    first.addEventListener('keydown', function (e) {
 
-    if (e.type === 'keydown') {
-        handleKeydownEvent(e);
-    }
+        if ((e.keyCode === 9) && (e.shiftKey)) {
+            e.preventDefault();
+            last.focus();
+        }
+    })
 }
 
 
@@ -224,7 +236,6 @@ function clearModal() {
     const modalGrid = document.querySelector('.modal-grid');
     modalGrid.innerHTML = '';
 }
-
 
 
 function hideModal(e) {
@@ -239,15 +250,11 @@ function hideModal(e) {
     plantsModal.classList.remove('plants-modal-expanded');
 
     if (e.type === 'keydown') {
+        closeModalButton.setAttribute('tabindex', -1);
+
         // return focus to the element that held focus before the modal was open 
         lastFocusedElement.focus();
     }
-}
-
-function returnToPagePosition() {
-    // scroll to where the user was before opening the modal, adjusted for sticky header height
-    let mq = window.matchMedia("(min-width: 500px)");
-    mq.matches ? window.scrollBy(0, Math.abs(lastYposition) + 95) : window.scrollBy(0, Math.abs(lastYposition) + 131);
 }
 
 
@@ -263,6 +270,7 @@ logoLink.addEventListener('click', function () {
     scrollToTop();
 });
 
+
 logoLink.addEventListener('keydown', function (e) {
     if (e.keyCode === 13) {
         scrollToTop();
@@ -271,39 +279,34 @@ logoLink.addEventListener('keydown', function (e) {
 
 
 plantsContent.addEventListener('click', function (e) {
-    // make sure the animation is only triggered if the open modal button was clicked
+    // make sure the animation is only triggered if the button to open/close the modal was clicked
     if (e.target.classList.value === 'open-modal') {
         buildModalItemCards(e);
         showModal(e);
         scrollToTopOfModal();
     } else if (e.target.classList.value === 'close-modal-button focusable') {
         hideModal(e);
-        //returnToPagePosition();
     }
 });
 
 
 plantsContent.addEventListener('keydown', function (e) {
-
     // user can open the modal by pressing 'enter', or the space bar
     if ((e.target.classList.value === 'open-modal') && (e.keyCode === 13 || e.keyCode === 32)) {
+
         // prevent default behavior of enter and space
         e.preventDefault();
 
-        buildModalItemCards(e);
-        showModal(e);
-        scrollToTopOfModal();
+        buildModalItemCards(e); // build the cards
+        showModal(e); // open the modal window
+        scrollToTopOfModal(); // scroll to top of modal window
 
-    } else {  // user can close modal with space (if block), enter or escapse (if/else block)
-        if ((e.target.classList.value === 'close-modal-button focusable') && (e.keyCode === 32)) {
-            // prevent the default behavior of the space key
-            e.preventDefault();
+    } else if ((e.target.classList.value === 'close-modal-button focusable') && (e.keyCode === 9)) {
 
-            hideModal(e);
+    } else {  // user can close modal with space, enter,  or escapse
+        if ((e.target.classList.value === 'close-modal-button focusable') && (e.keyCode === 32 || e.keyCode === 13 || e.keyCode === 27)) {
 
-        } else if ((e.target.classList.value === 'close-modal-button focusable') && (e.keyCode === 13 || e.keyCode === 27)) {
-
-            // prevent the default behavior of enter
+            // prevent the default behavior of the space key, enter, escape
             e.preventDefault();
 
             hideModal(e);
@@ -319,14 +322,29 @@ plantsContent.addEventListener('transitionend', function (e) {
     // conditionals to ensure the event only fires on the intended transition
     if (e.propertyName === 'transform' && e.target.classList.value === 'plants-modal') {
         clearModal();
-        // returnToPagePosition(); TODO: decide if/when i should use this
+    }
+});
+
+
+// determine what should happen when the user tabs on the closeModalButton
+closeModalButton.addEventListener('keydown', function (e) {
+    let focusableItems = plantsModal.querySelectorAll('.focusable');
+
+    if (focusableItems.length === 1) { // nothing can be tabbed to
+        if (e.keyCode === 9) {
+            e.preventDefault();
+        }
+    } else {
+        // if any of the modal cards in the modal window show growing tips, the user can tab to them
+        closeModalButton.setAttribute('tabindex', 0);
+        createKeyboardTrap(focusableItems, e);
     }
 });
 
 
 hamburgerIcon.addEventListener('click', showMobileMenu);
-hamburgerIcon.addEventListener('keydown', showMobileMenu);
 
+hamburgerIcon.addEventListener('keydown', showMobileMenu);
 //TODO: make mobile menu work for keydown events
 
 
@@ -341,9 +359,7 @@ document.body.addEventListener('click', function (e) {
     if (e.target !== hamburgerIcon) {
         // make sure the mobile menu is open
         if ((e.target !== mobileMenu) && (mobileMenu.style.width > '0')) {
-            mobileMenu.style.width = '0';
-            mobileMenu.setAttribute('aria-hidden', true);
-            hamburgerIcon.setAttribute('aria-expanded', false);
+            removeMobileMenuStyles();
         }
     }
 });
