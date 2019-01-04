@@ -148,6 +148,7 @@ header {
     visibility: hidden; 
 }
 
+
 .isOpen {
     width: 300px;
     opacity: 1;
@@ -513,7 +514,6 @@ details  p {
 }
 
 
-/* TODO: add a longer animation delay on each subsequent card??? */
 .hide-modal-content {
     animation: slideDown .2s .1s ease-in-out both;
 }
