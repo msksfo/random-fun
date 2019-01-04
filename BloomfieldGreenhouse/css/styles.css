@@ -34,6 +34,7 @@ body {
     font-size: 1rem;
     color: var(--dark-gray);
     line-height: 1.5;
+    font-family: 'Thasadith', sans-serif;
 }
 
 
@@ -77,13 +78,16 @@ header {
 
 
 .logo {
-    font-size: 2rem;
+    font-size: 2rem; /* TODO: delete this? */
+
     display: grid;
     line-height: initial;
 }
 
 
 .logo-link {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 1.8rem;
     color: var(--dark-gray);
     margin-bottom: .4rem;
 }
@@ -95,7 +99,7 @@ header {
 
 
 .planting-zone {
-    font-size: 1rem;
+    font-size: 1.14rem;
 }
 
 
@@ -299,15 +303,17 @@ header {
 
 
 .signature {
-    font-family: cursive;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     letter-spacing: 1.1px;
+}
+
+.signature > span {
+    font-family: 'Cedarville Cursive', cursive;
 }
 
 
 .about-text {
     font-size: 1.1rem;
-    line-height: 1.4;
 }
 
 
@@ -357,13 +363,14 @@ mark {
 .quote-author {
     margin-top: .5rem;
     font-size: 1.3rem;
-    font-family: cursive;
+    letter-spacing: 1.2px;
+    font-family: 'Charm', cursive;
 }
 
 
 .quote-text {
-    font-size: 1.8rem;
-    font-family: cursive;
+    font-size: 1.6rem;
+    font-family: 'Charm', cursive;
     letter-spacing: 1.2px;
 }
 
