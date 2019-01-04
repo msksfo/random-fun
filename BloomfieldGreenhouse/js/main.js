@@ -11,11 +11,12 @@ const plantsModal = document.querySelector('.plants-modal');
 let closeModalButton = document.querySelector('.close-modal-button');
 
 let lastFocusedElement;
-let lastYposition;
 
 
 
-/******** FUNCTIONS ********/
+/****************************************************/
+/*                  Functions                       */
+/****************************************************/
 
 function scrollToTop() {
     window.scroll(0, 0);
@@ -29,65 +30,49 @@ function setCurrentYear() {
 }
 
 
-// show mobile menu
 function showMobileMenu(e) {
-    let closeButton = document.querySelector('.close-mobileNav-button');
+    let closeMobileNavButton = document.querySelector('.close-mobileNav-button');
 
+    // if the mobile navigation menu was opened with a keydown event, wait for the css transition (to slide in the mobile nav) to end, then apply focus to the button that closes the mobile nav menu
     if (e.type === 'keydown') {
         if (e.keyCode === 13 || e.keyCode === 32) {
             e.preventDefault();
-            setMobileMenuStyles();
 
-            closeButton.focus(); // TODO: why is this not working?????
+            mobileMenu.classList.add('isOpen');
+            setMobileMenuAria();
+
+            mobileMenu.addEventListener('transitionend', function (e) {
+                e.stopPropagation();
+                if (e.propertyName === 'width' && e.target.clientWidth === 300) {
+                    closeMobileNavButton.focus();
+                }
+            })
         }
-    } else {
-        setMobileMenuStyles();
+    } else { // for click events
+        mobileMenu.classList.add('isOpen');
+        setMobileMenuAria();
     }
-
 }
 
 
-function setMobileMenuStyles() {
-    mobileMenu.style.width = '300px';
+// show mobile menu to assistive technology when the hamburger icon is clicked
+function setMobileMenuAria() {
     mobileMenu.setAttribute('aria-hidden', false);
     hamburgerIcon.setAttribute('aria-expanded', true);
-
-    mobileMenu.style.opacity = '1';
-    mobileMenu.style.visibility = 'visible';
 }
 
 
-function removeMobileMenuStyles() {
-    mobileMenu.style.width = '0';
+// hide mobile menu from assistive technology when the the close button or in page anchors are clicked
+function removeMobileMenuAria() {
     mobileMenu.setAttribute('aria-hidden', true);
     hamburgerIcon.setAttribute('aria-expanded', false);
-
-    mobileMenu.style.opacity = '0';
-    mobileMenu.style.visibility = 'hidden';
 }
 
 
 // close the mobile menu if user clicks / tabs on 'x', or any in page anchor link
-function hideMobileMenu(e) {
-    // conditionals ensure user specifically clicked the close button or an anchor link
-    if (e.type === 'keydown') { // for keyboard events
-
-        // enter / space on the button to close the mobile menu
-        if (e.target.classList.value.includes('close-mobileNav-button')) {
-            removeMobileMenuStyles();
-
-            //TODO: why is this not working????
-            hamburgerIcon.focus(); // put focus back where it was before mobile menu was opened
-
-        } else if (e.target.classList.value.includes('mobile-nav-link')) {
-            // enter on in page anchor link
-            removeMobileMenuStyles();
-        }
-    } else { // for click events
-        if (e.target.classList.value.includes('close-mobileNav-button') || e.target.classList.value.includes('mobile-nav-link')) {
-            removeMobileMenuStyles();
-        }
-    }
+function hideMobileMenu() {
+    mobileMenu.classList.remove('isOpen');
+    removeMobileMenuAria();
 }
 
 
@@ -171,6 +156,7 @@ function setAriaAttributes(e, dialog) {
     }
 }
 
+
 // hide modal from screen readers & remove aria label from modal window
 function removeAriaAttributes(dialog) {
     dialog.removeAttribute('aria-label');
@@ -200,7 +186,6 @@ function showModal(e) {
 */
 function scrollToTopOfModal() {
     let yPosition = plantsModal.getBoundingClientRect().y;
-    lastYposition = yPosition;
 
     // get viewport width and scroll to top of modal window, adjusted for sticky header height
     let mq = window.matchMedia("(min-width: 500px)");
@@ -264,7 +249,9 @@ function main() {
 
 
 
-/******** EVENT LISTENERS ********/
+/************************************************************************/
+/*                         EVENT LISTENERS                              */
+/************************************************************************/
 
 logoLink.addEventListener('click', function () {
     scrollToTop();
@@ -300,8 +287,6 @@ plantsContent.addEventListener('keydown', function (e) {
         buildModalItemCards(e); // build the cards
         showModal(e); // open the modal window
         scrollToTopOfModal(); // scroll to top of modal window
-
-    } else if ((e.target.classList.value === 'close-modal-button focusable') && (e.keyCode === 9)) {
 
     } else {  // user can close modal with space, enter,  or escapse
         if ((e.target.classList.value === 'close-modal-button focusable') && (e.keyCode === 32 || e.keyCode === 13 || e.keyCode === 27)) {
@@ -343,18 +328,31 @@ closeModalButton.addEventListener('keydown', function (e) {
 
 
 hamburgerIcon.addEventListener('click', showMobileMenu);
-
 hamburgerIcon.addEventListener('keydown', showMobileMenu);
-//TODO: make mobile menu work for keydown events
 
+mobileMenu.addEventListener('keydown', function (e) {
+    // user pressed 'enter', 'space', or 'esc' on the button to close the mobile menu
+    if (e.target.classList.value.includes('close-mobileNav-button') && (e.keyCode === 13 || e.keycode === 27 || e.keyCode === 32)) {
+        e.preventDefault();
+        hideMobileMenu();
+        hamburgerIcon.focus();
+    } else if (e.target.classList.value.includes('mobile-nav-link') && e.keyCode === 13) {
+        // user pressed 'enter' on an in page anchor link
+        hideMobileMenu();
+    }
+});
 
 mobileMenu.addEventListener('click', function (e) {
-    hideMobileMenu(e)
-});
+    // user clicked the button to close the mobile menu or they clicked an in page anchor link
+    if (e.target.classList.value.includes('close-mobileNav-button') || e.target.classList.value.includes('mobile-nav-link')) {
+        hideMobileMenu();
+    }
+})
 
 
 // user can close the mobile menu by clicking anywhere outside of it
-document.body.addEventListener('click', function (e) {
+/*
+document.addEventListener('click', function (e) {
     // make sure they are not trying to open the mobile menu
     if (e.target !== hamburgerIcon) {
         // make sure the mobile menu is open
@@ -363,5 +361,6 @@ document.body.addEventListener('click', function (e) {
         }
     }
 });
+*/
 
 main();
