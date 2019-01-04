@@ -2,8 +2,10 @@
 
 /******* VARIABLES ********/
 const logoLink = document.getElementById('logo-link');
+
 const hamburgerIcon = document.querySelector('#js-mobile-icon');
 const mobileMenu = document.querySelector('#js-mobile-nav');
+const closeMobileNavButton = document.querySelector('.close-mobileNav-button');
 
 const plantsContent = document.querySelector('.plants-content');
 const plantsModal = document.querySelector('.plants-modal');
@@ -31,7 +33,6 @@ function setCurrentYear() {
 
 
 function showMobileMenu(e) {
-    let closeMobileNavButton = document.querySelector('.close-mobileNav-button');
 
     // if the mobile navigation menu was opened with a keydown event, wait for the css transition (to slide in the mobile nav) to end, then apply focus to the button that closes the mobile nav menu
     if (e.type === 'keydown') {
@@ -193,10 +194,10 @@ function scrollToTopOfModal() {
 }
 
 
-// take in the array of focusable items in the modal window, and create a loop to to prevent tabbing outside of these elements 
+// take in the array of focusable items in the modal or mobile navigation, and create a loop to to prevent tabbing outside of these elements 
 function createKeyboardTrap(arr, e) {
 
-    let first = arr[0]; // this will be the button to close the modal window
+    let first = arr[0]; // this will be the button to close the modal window / mobile navigaion
     let last = arr[arr.length - 1];
 
     last.addEventListener('keydown', function (e) {
@@ -257,11 +258,45 @@ logoLink.addEventListener('click', function () {
     scrollToTop();
 });
 
-
 logoLink.addEventListener('keydown', function (e) {
     if (e.keyCode === 13) {
         scrollToTop();
     }
+});
+
+
+hamburgerIcon.addEventListener('click', showMobileMenu);
+hamburgerIcon.addEventListener('keydown', showMobileMenu);
+
+mobileMenu.addEventListener('keydown', function (e) {
+    // user pressed 'enter', 'space', or 'esc' on the button to close the mobile menu
+    if (e.target.classList.value.includes('close-mobileNav-button') && (e.keyCode === 32 || e.keycode === 13 || e.keyCode === 27)) {
+        e.preventDefault();
+        hideMobileMenu();
+        hamburgerIcon.focus();
+    } else if (e.target.classList.value.includes('mobile-nav-link') && e.keyCode === 13) {
+        // user pressed 'enter' on an in page anchor link
+        hideMobileMenu();
+    }
+});
+
+
+mobileMenu.addEventListener('click', function (e) {
+    // user clicked the button to close the mobile menu or they clicked an in page anchor link
+    if (e.target.classList.value.includes('close-mobileNav-button') || e.target.classList.value.includes('mobile-nav-link')) {
+        hideMobileMenu();
+    }
+});
+
+
+// keep focus within mobile menu while it's open
+closeMobileNavButton.addEventListener('keydown', function (e) {
+    let button = mobileMenu.querySelector('.close-mobileNav-button');
+    let links = Array.from(mobileMenu.querySelectorAll('.mobile-nav-link'));
+
+    let focusableItems = [button, ...links];
+
+    createKeyboardTrap(focusableItems, e);
 });
 
 
@@ -288,7 +323,7 @@ plantsContent.addEventListener('keydown', function (e) {
         showModal(e); // open the modal window
         scrollToTopOfModal(); // scroll to top of modal window
 
-    } else {  // user can close modal with space, enter,  or escapse
+    } else {  // user can close modal with space, enter, or escape
         if ((e.target.classList.value === 'close-modal-button focusable') && (e.keyCode === 32 || e.keyCode === 13 || e.keyCode === 27)) {
 
             // prevent the default behavior of the space key, enter, escape
@@ -327,27 +362,9 @@ closeModalButton.addEventListener('keydown', function (e) {
 });
 
 
-hamburgerIcon.addEventListener('click', showMobileMenu);
-hamburgerIcon.addEventListener('keydown', showMobileMenu);
 
-mobileMenu.addEventListener('keydown', function (e) {
-    // user pressed 'enter', 'space', or 'esc' on the button to close the mobile menu
-    if (e.target.classList.value.includes('close-mobileNav-button') && (e.keyCode === 13 || e.keycode === 27 || e.keyCode === 32)) {
-        e.preventDefault();
-        hideMobileMenu();
-        hamburgerIcon.focus();
-    } else if (e.target.classList.value.includes('mobile-nav-link') && e.keyCode === 13) {
-        // user pressed 'enter' on an in page anchor link
-        hideMobileMenu();
-    }
-});
-
-mobileMenu.addEventListener('click', function (e) {
-    // user clicked the button to close the mobile menu or they clicked an in page anchor link
-    if (e.target.classList.value.includes('close-mobileNav-button') || e.target.classList.value.includes('mobile-nav-link')) {
-        hideMobileMenu();
-    }
-})
+//TODO: tomorrow, create function to eliminate global variables (return an object of dom nodes)
+// TODO: also, try to implement the listener on the body, so user can click anywehre to close mobile menu
 
 
 // user can close the mobile menu by clicking anywhere outside of it
