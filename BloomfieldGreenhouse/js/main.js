@@ -40,7 +40,8 @@
                 e.preventDefault();
 
                 myDomNodes.mobileMenu.classList.add('isOpen');
-                setMobileMenuAria();
+                toggleMobileMenuAria(myDomNodes.mobileMenu, 'aria-hidden', false);
+                toggleMobileMenuAria(myDomNodes.hamburgerIcon, 'aria-expanded', true);
 
                 myDomNodes.mobileMenu.addEventListener('transitionend', function (e) {
                     e.stopPropagation();
@@ -51,29 +52,23 @@
             }
         } else { // for click events
             myDomNodes.mobileMenu.classList.add('isOpen');
-            setMobileMenuAria();
+            toggleMobileMenuAria(myDomNodes.mobileMenu, 'aria-hidden', false);
+            toggleMobileMenuAria(myDomNodes.hamburgerIcon, 'aria-expanded', true);
         }
     }
 
 
-    // show mobile menu to assistive technology when the hamburger icon is clicked
-    function setMobileMenuAria() {
-        myDomNodes.mobileMenu.setAttribute('aria-hidden', false);
-        myDomNodes.hamburgerIcon.setAttribute('aria-expanded', true);
-    }
-
-
-    // hide mobile menu from assistive technology when the the close button or in page anchors are clicked
-    function removeMobileMenuAria() {
-        myDomNodes.mobileMenu.setAttribute('aria-hidden', true);
-        myDomNodes.hamburgerIcon.setAttribute('aria-expanded', false);
+    // toggle the aria attributes of the hamburger icon and the mobile menu
+    function toggleMobileMenuAria(elem, attr, trueFalse) { //TODO: a way to further refactor this?
+        elem.setAttribute(attr, trueFalse);
     }
 
 
     // close the mobile menu if user clicks / tabs on 'x', or any in page anchor link
     function hideMobileMenu() {
         myDomNodes.mobileMenu.classList.remove('isOpen');
-        removeMobileMenuAria();
+        toggleMobileMenuAria(myDomNodes.mobileMenu, 'aria-hidden', true);
+        toggleMobileMenuAria(myDomNodes.hamburgerIcon, 'aria-expanded', false);
     }
 
 
@@ -135,7 +130,6 @@
             // add each card to the modal grid div
             modalGrid.innerHTML += modalCard;
         });
-
     }
 
 
