@@ -105,7 +105,7 @@ h1 {
 
 /* TODO: is this color accessible??? */
 .openingHours-link:hover, .openingHours-link:focus {
-    color: var(--yellow);
+    color: #008000;
     transform: scale(1.1);
     text-decoration: none;
 }
