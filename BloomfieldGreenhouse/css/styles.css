@@ -278,7 +278,7 @@ header {
 
 
 .section-header {
-   font-size: 1.8rem;
+   font-size: 1.7rem;
 }
 
 
@@ -419,6 +419,7 @@ mark {
     outline: none;
     border: 1px solid var(--lighter-green);
     background-color: #fff;
+    font-family: 'Thasadith', sans-serif;
 
      /* stick the button to the bottom of it's parent container */
      margin: auto 0 1.25rem 0;
@@ -755,12 +756,13 @@ footer p {
 
 .tangoecho {
     color: var(--dark-gray);
-    transition: color .3s ease;
+    transition: all .3s ease;
 }
 
 
 .tangoecho:hover, .tangoecho:focus {
     color: purple;
+    font-weight: bold;
 }
 
 
@@ -800,29 +802,7 @@ footer p {
 }
 
 
-
 @media screen and (min-width: 780px){
-    /* ==== header/navigation ==== */
-
-    header {
-        display: flex;
-    }
-
-
-    .planting-zone {
-        text-align: left;
-    }
-
-
-    .mobile-icon, .mobile-nav {
-        display: none;
-    }
-
-
-    .full-width-nav {
-        display: block;
-    }
-
 
     .hero-image {
         background-attachment: fixed;
@@ -930,4 +910,32 @@ footer p {
         border-bottom: 1px solid #6AAA5D;
         padding: 30px 2rem;
     }
+}
+
+
+@media screen and (min-width: 850px){
+    header { 
+        display: flex;
+    }
+
+
+    .planting-zone {
+        text-align: left;
+    }
+
+
+    .mobile-icon, .mobile-nav {
+        display: none;
+    }
+
+
+    .full-width-nav {
+        display: block;
+    }
+
+
+    .hero-image {
+        background-attachment: fixed;
+    }
+
 }
