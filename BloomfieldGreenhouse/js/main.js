@@ -40,11 +40,11 @@
                 e.preventDefault();
 
                 myDomNodes.mobileMenu.classList.add('isOpen');
-                toggleMobileMenuAria(myDomNodes.mobileMenu, 'aria-hidden', false);
-                toggleMobileMenuAria(myDomNodes.hamburgerIcon, 'aria-expanded', true);
+                toggleMobileMenuAria(myDomNodes.mobileMenu, 'aria-hidden');
+                toggleMobileMenuAria(myDomNodes.hamburgerIcon, 'aria-expanded');
 
                 myDomNodes.mobileMenu.addEventListener('transitionend', function (e) {
-                    e.stopPropagation();
+                    //e.stopPropagation();
                     if (e.propertyName === 'width' && e.target.clientWidth === 300) {
                         myDomNodes.closeMobileNavButton.focus();
                     }
@@ -52,23 +52,28 @@
             }
         } else { // for click events
             myDomNodes.mobileMenu.classList.add('isOpen');
-            toggleMobileMenuAria(myDomNodes.mobileMenu, 'aria-hidden', false);
-            toggleMobileMenuAria(myDomNodes.hamburgerIcon, 'aria-expanded', true);
+            toggleMobileMenuAria(myDomNodes.hamburgerIcon, 'aria-expanded');
+            toggleMobileMenuAria(myDomNodes.mobileMenu, 'aria-hidden');
         }
     }
 
 
     // toggle the aria attributes of the hamburger icon and the mobile menu
-    function toggleMobileMenuAria(elem, attr, trueFalse) { //TODO: a way to further refactor this?
-        elem.setAttribute(attr, trueFalse);
+    function toggleMobileMenuAria(elem, attr) {
+        let value = elem.getAttribute(attr); // this will be a string
+
+        // convert the above string value to a boolean
+        let trueFalse = (value === 'true');
+
+        elem.setAttribute(attr, !trueFalse);
     }
 
 
     // close the mobile menu if user clicks / tabs on 'x', or any in page anchor link
     function hideMobileMenu() {
         myDomNodes.mobileMenu.classList.remove('isOpen');
-        toggleMobileMenuAria(myDomNodes.mobileMenu, 'aria-hidden', true);
-        toggleMobileMenuAria(myDomNodes.hamburgerIcon, 'aria-expanded', false);
+        toggleMobileMenuAria(myDomNodes.mobileMenu, 'aria-hidden');
+        toggleMobileMenuAria(myDomNodes.hamburgerIcon, 'aria-expanded');
     }
 
 
@@ -263,13 +268,22 @@
     myDomNodes.hamburgerIcon.addEventListener('keydown', showMobileMenu);
 
     myDomNodes.mobileMenu.addEventListener('keydown', function (e) {
+        let xPressed = (e.target.classList.contains('close-mobileNav-button'));
+        let allowedKeys = (e.keyCode === 32 || e.keyCode === 13 || e.keyCode === 27);
+        let anchorLink = (e.target.classList.contains('mobile-nav-link'));
+        let enterPressed = (e.keyCode === 13);
+
         // user pressed 'enter', 'space', or 'esc' on the button to close the mobile menu
-        if (e.target.classList.contains('close-mobileNav-button') && (e.keyCode === 32 || e.keycode === 13 || e.keyCode === 27)) {
+        if (xPressed && allowedKeys) {
             e.preventDefault();
             hideMobileMenu();
             myDomNodes.hamburgerIcon.focus();
-        } else if (e.target.classList.contains('mobile-nav-link') && e.keyCode === 13) {
+        } else if (enterPressed && anchorLink) {
             // user pressed 'enter' on an in page anchor link
+
+            // because default behavior is for a tags to fire click when enter is pressed
+            e.preventDefault();
+
             hideMobileMenu();
         }
     });
@@ -277,7 +291,10 @@
 
     myDomNodes.mobileMenu.addEventListener('click', function (e) {
         // user clicked the button to close the mobile menu or they clicked an in page anchor link
-        if (e.target.classList.contains('close-mobileNav-button') || e.target.classList.contains('mobile-nav-link')) {
+        let xPressed = (e.target.classList.contains('close-mobileNav-button'));
+        let anchorLink = (e.target.classList.contains('mobile-nav-link'));
+
+        if (xPressed || anchorLink) {
             hideMobileMenu();
         }
     });
@@ -285,12 +302,15 @@
 
     // keep focus within mobile menu while it's open
     myDomNodes.closeMobileNavButton.addEventListener('keydown', function (e) {
-        let button = myDomNodes.mobileMenu.querySelector('.close-mobileNav-button');
-        let links = Array.from(myDomNodes.mobileMenu.querySelectorAll('.mobile-nav-link'));
+        if (e.keyCode === 9) {
+            e.stopPropagation();
+            let button = myDomNodes.mobileMenu.querySelector('.close-mobileNav-button');
+            let links = Array.from(myDomNodes.mobileMenu.querySelectorAll('.mobile-nav-link'));
 
-        let focusableItems = [button, ...links];
+            let focusableItems = [button, ...links];
 
-        createKeyboardTrap(focusableItems, e);
+            createKeyboardTrap(focusableItems, e);
+        }
     });
 
 
