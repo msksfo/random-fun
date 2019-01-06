@@ -258,7 +258,7 @@ header {
 /* ========================= Hero Image ======================== */
 
 .hero-image {
-    background-image: url('../assets/images/hero3.jpg');
+    background-image: url('../assets/images/cropped/hero3.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
