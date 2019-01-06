@@ -374,6 +374,10 @@ mark {
     letter-spacing: 1.2px;
 }
 
+q.quote-text:before, q.quote-text:after {
+    font-family: 'Charm', cursive;
+}
+
 
 /* the grid of plant types/descriptions */
 .plants-content {
