@@ -16,8 +16,8 @@
 <body>
     <div class='wrapper'>
 
-        <div class='video-container'>
-            <video autoplay loop muted>
+        <div id='js-video-container' class='video-container-image video-container-video'>
+            <video id='js-daisyVideo' preload='auto' autoplay loop muted>
                 <source src="assets/video/daisy.mp4" type='video/mp4'>
                 <p>Your browser does not support HTML5 video</p>
             </video>
@@ -46,6 +46,7 @@
 
     </div> <!-- close .wrapper -->
 
+    <script src='js/landing.js'></script>
 </body>
 
 </html>
