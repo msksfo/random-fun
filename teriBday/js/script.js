@@ -1,11 +1,11 @@
 
 
 
-function playSound(e){
+function playSound(e) {
 	const audio = document.querySelector(`audio[data-letter="${e.keyCode}"]`);
-	const letter = document.querySelector(`.letter[data-letter="${e.keyCode}"]`);
+	const letters = document.querySelectorAll(`.letter[data-letter="${e.keyCode}"]`);
 
-	if (!audio){ // don't run the function if they type a key that does not have audio
+	if (!audio) { // don't run the function if they type a key that does not have audio clip
 		return
 	}
 
@@ -13,10 +13,12 @@ function playSound(e){
 	 quickly in succession */
 	audio.play();
 
-	letter.classList.add('playing');
+	letters.forEach(letter => letter.classList.add('playing'));
+
+	//letters.classList.add('playing');
 }
 
-function removeTransition(e){
+function removeTransition(e) {
 	if (e.propertyName !== 'transform') return;
 
 	this.classList.remove('playing');
