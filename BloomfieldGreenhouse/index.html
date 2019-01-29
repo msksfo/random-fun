@@ -1,286 +1,517 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="description"
+            content="Bloomfield Greenhouse is a family owned and operated greenhouse in New Berlin, Illinois"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Bloomfield Greenhouse</title>
 
-<head>
-    <meta charset='utf-8'>
-    <meta name='description' content='Bloomfield Greenhouse is a family owned and operated greenhouse in New Berlin, Illinois'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>Bloomfield Greenhouse</title>
+        <!-- favicon -->
+        <!--
+        <link
+            rel="shortcut icon"
+            type="image/png"
+            href="assets/images/narcissus/favicon.ico"
+        />
+        -->
+        <link
+            rel="apple-touch-icon"
+            sizes="152x152"
+            href="favicon/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="favicon/site.webmanifest" />
+        <link
+            rel="mask-icon"
+            href="favicon/safari-pinned-tab.svg"
+            color="#5bbad5"
+        />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
 
+        <!-- google font for Logo, exact letters specified for performance improvement-->
+        <link
+            href="https://fonts.googleapis.com/css?family=Cinzel+Decorative&text=BlomfieldGrnhus"
+            rel="stylesheet"
+        />
 
-    <!-- google font for Logo, exact letters specified for performance improvement-->
-    <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative&text=BlomfieldGrnhus" rel="stylesheet">
+        <!-- google font for text-->
+        <link
+            href="https://fonts.googleapis.com/css?family=Thasadith:400,700"
+            rel="stylesheet"
+        />
 
-    <!-- google font for text-->
-    <link href="https://fonts.googleapis.com/css?family=Thasadith:400,700" rel="stylesheet">
+        <!-- google font for Peggy & Don signature, exact letters specified for performance improvement -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Cedarville+Cursive&text=Pegy%26Don"
+            rel="stylesheet"
+        />
 
-    <!-- google font for Peggy & Don signature, exact letters specified for performance improvement -->
-    <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive&text=Pegy%26Don" rel="stylesheet">
+        <!-- google font for Oscar Wilde quote, exact letters specified for performance improvement -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Charm&text=AflowerbosmitnjyOcaWd%7E%27%22"
+            rel="stylesheet"
+        />
 
-    <!-- google font for Oscar Wilde quote, exact letters specified for performance improvement -->
-    <link href="https://fonts.googleapis.com/css?family=Charm&text=AflowerbosmitnjyOcaWd%7E%27%22" rel="stylesheet">
+        <!-- font awesome icons-->
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+            integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+            crossorigin="anonymous"
+        />
 
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
 
-    <!-- font awesome icons-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-        crossorigin="anonymous">
-
-    <link rel='stylesheet' href='css/styles.css'>
-</head>
-
-<body>
-    <div class='container'>
-        <header>
-            <!-- hamburger icon to toggle mobile navigation-->
-            <div aria-label='Mobile Navigation Trigger' aria-controls='js-mobile-nav' aria-expanded='false' role='button'
-                tabindex='0' class='mobile-icon' id='js-mobile-icon'>
-                <div class='middle'></div>
-            </div>
-
-            <!-- mobile navigation -->
-            <nav aria-hidden='true' class='mobile-nav' id='js-mobile-nav'>
-                <button aria-label='Close mobile navigation' class='close-mobileNav-button'>X</button>
-
-                <ul class='mobile-nav-list'>
-                    <li><a class='mobile-nav-link' href='#about'>About</a></li>
-                    <li><a class='mobile-nav-link' href='#plants'>Plants</a></li>
-                    <li><a class='mobile-nav-link' href='#gifts'>Farm Finds</a></li>
-                    <li><a class='mobile-nav-link' href='#contact'>Contact</a></li>
-                </ul>
-            </nav>
-
-            <div class='logo'>
-                <a tabindex='0' id='logo-link' class='logo-link'>Bloomfield Greenhouse</a>
-                <span class='planting-zone'>Planting Zone 6</span>
-            </div>
-
-            <nav class='full-width-nav'>
-                <ul class='nav-list'>
-                    <li><a class='nav-link' href='#about'>About</a></li>
-                    <li><a class='nav-link' href='#plants'>Plants</a></li>
-                    <li><a class='nav-link' href='#gifts'>Farm Finds</a></li>
-                    <li><a class='nav-link' href='#contact'>Contact</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <div class='hero-image'></div>
-
-        <main>
-
-            <span id='about' class='nav-offset'></span>
-            <section class='about anchor'>
-                <h1 class='section-header'>About Us</h1>
-                <div class='about-content'>
-                    <figure class='profile-figure'>
-                        <img class='profile-pic' src='assets/images/profilePic.jpg' alt='Peggy and her husband'>
-                    </figure>
-                    <div class='about-text-container'>
-                        <p class='no-top-margin about-text'>Thanks for stopping by! We are a family owned and operated
-                            greenhouse in central Illinois. We are passionate about nature and gardening in general,
-                            about bringing beauty to your home and
-                            helping you provide home grown food for your family, in particular.</p>
-
-                        <p class='about-text'>Looking for online ordering? We're not set up for that at this time.
-                            However, we may be able to ship your item(s) to you. Give us a call or shoot us an email
-                            with the details of what you're looking for. We'll let you know if shipping is possible, as
-                            well as the corresponding pricing information.</p>
-
-                        <p class='about-text'>We love to see what our
-                            customers have
-                            created with our products. Use your favorite social network to <mark>#sharewhatyougrow</mark>
-                        </p>
-
-                        <p class='signature'>~ <span>Peggy &amp; Don</span> ~</p>
-                    </div>
+    <body>
+        <div class="container">
+            <header>
+                <!-- hamburger icon to toggle mobile navigation-->
+                <div
+                    aria-label="Mobile Navigation Trigger"
+                    aria-controls="js-mobile-nav"
+                    aria-expanded="false"
+                    role="button"
+                    tabindex="0"
+                    class="mobile-icon"
+                    id="js-mobile-icon"
+                >
+                    <div class="middle"></div>
                 </div>
-            </section> <!-- close .about -->
 
+                <!-- mobile navigation -->
+                <nav aria-hidden="true" class="mobile-nav" id="js-mobile-nav">
+                    <button
+                        aria-label="Close mobile navigation"
+                        class="close-mobileNav-button"
+                    >
+                        X
+                    </button>
 
-            <section class='products'>
+                    <ul class="mobile-nav-list">
+                        <li>
+                            <a class="mobile-nav-link" href="#about">About</a>
+                        </li>
+                        <li>
+                            <a class="mobile-nav-link" href="#plants">Plants</a>
+                        </li>
+                        <li>
+                            <a class="mobile-nav-link" href="#gifts"
+                                >Farm Finds</a
+                            >
+                        </li>
+                        <li>
+                            <a class="mobile-nav-link" href="#contact"
+                                >Contact</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
 
-                <span id='plants' class='nav-offset'></span>
-                <section class='plants'>
-                    <h1 class='section-header'>Plants</h1>
-                    <div class='flower-border'>
-                        <img class='flower' src='assets/images/cropped/prettyFlower.jpg' alt=''>
-                        <img class='flower' src='assets/images/cropped/rose.jpg' alt=''>
-                        <img class='flower' src='assets/images/cropped/yellowFlower.jpg' alt=''>
-                        <img class='flower' src='assets/images/cropped/perennials.jpg' alt=''>
-                    </div> <!-- close .flower-border-->
+                <div class="logo">
+                    <a tabindex="0" id="logo-link" class="logo-link"
+                        >Bloomfield Greenhouse</a
+                    >
+                    <span class="planting-zone">Planting Zone 6</span>
+                </div>
 
-                    <div class='quote-wrapper'>
-                        <div class='quote'>
-                            <q class='quote-text'>A flower blossoms for it's own joy.</q>
-                            <p class='quote-author'>~ Oscar Wilde</p>
+                <nav class="full-width-nav">
+                    <ul class="nav-list">
+                        <li><a class="nav-link" href="#about">About</a></li>
+                        <li><a class="nav-link" href="#plants">Plants</a></li>
+                        <li>
+                            <a class="nav-link" href="#gifts">Farm Finds</a>
+                        </li>
+                        <li><a class="nav-link" href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <div class="hero-image"></div>
+
+            <main>
+                <span id="about" class="nav-offset"></span>
+                <section class="about anchor">
+                    <h1 class="section-header">About Us</h1>
+                    <div class="about-content">
+                        <figure class="profile-figure">
+                            <img
+                                class="profile-pic"
+                                src="assets/images/profilePic.jpg"
+                                alt="Peggy and her husband"
+                            />
+                        </figure>
+                        <div class="about-text-container">
+                            <p class="no-top-margin about-text">
+                                Thanks for stopping by! We are a family owned
+                                and operated greenhouse in central Illinois. We
+                                are passionate about nature and gardening in
+                                general, about bringing beauty to your home and
+                                helping you provide home grown food for your
+                                family, in particular.
+                            </p>
+
+                            <p class="about-text">
+                                Looking for online ordering? We're not set up
+                                for that at this time. However, we may be able
+                                to ship your item(s) to you. Give us a call or
+                                shoot us an email with the details of what
+                                you're looking for. We'll let you know if
+                                shipping is possible, as well as the
+                                corresponding pricing information.
+                            </p>
+
+                            <p class="about-text">
+                                We love to see what our customers have created
+                                with our products. Use your favorite social
+                                network to <mark>#sharewhatyougrow</mark>
+                            </p>
+
+                            <p class="signature">
+                                ~ <span>Peggy &amp; Don</span> ~
+                            </p>
                         </div>
                     </div>
+                </section>
+                <!-- close .about -->
 
-                    <section class='plants-content'>
-                        <div class='plant-text bottom right'>
-                            <h2 class='plant-title'>Flowers</h2>
-                            <p class='plant-type-description'>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Tempora distinctio ea quasi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Tempora distinctio ea quasi.
-                                quam reiciendis nostrum, dolorum laudantium a dicta ipsa nisi in praesentium vero
-                                provident soluta corporis dolorem voluptate laboriosam!
-                            </p>
+                <section class="products">
+                    <span id="plants" class="nav-offset"></span>
+                    <section class="plants">
+                        <h1 class="section-header">Plants</h1>
+                        <div class="flower-border">
+                            <img
+                                class="flower"
+                                src="assets/images/cropped/prettyFlower.jpg"
+                                alt=""
+                            />
+                            <img
+                                class="flower"
+                                src="assets/images/cropped/rose.jpg"
+                                alt=""
+                            />
+                            <img
+                                class="flower"
+                                src="assets/images/cropped/yellowFlower.jpg"
+                                alt=""
+                            />
+                            <img
+                                class="flower"
+                                src="assets/images/cropped/perennials.jpg"
+                                alt=""
+                            />
+                        </div>
+                        <!-- close .flower-border-->
 
-                            <button class='open-modal'>View All Flowers</button>
+                        <div class="quote-wrapper">
+                            <div class="quote">
+                                <q class="quote-text"
+                                    >A flower blossoms for it's own joy.</q
+                                >
+                                <p class="quote-author">~ Oscar Wilde</p>
+                            </div>
                         </div>
 
-                        <div class='plants-modal' role='dialog' aria-modal='true' aria-hidden='true'>
-                            <button tabindex='-1' aria-label='close' class='close-modal-button focusable'><span
-                                    aria-hidden='true' class='left-arrow'>&#8678;</span>
-                                BACK</button>
+                        <section class="plants-content">
+                            <div class="plant-text bottom right">
+                                <h2 class="plant-title">Flowers</h2>
+                                <p class="plant-type-description">
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipisicing elit. Tempora distinctio ea
+                                    quasi. Lorem ipsum dolor sit amet,
+                                    consectetur adipisicing elit. Tempora
+                                    distinctio ea quasi. quam reiciendis
+                                    nostrum, dolorum laudantium a dicta ipsa
+                                    nisi in praesentium vero provident soluta
+                                    corporis dolorem voluptate laboriosam!
+                                </p>
 
-                            <div class='modal-grid'></div>
+                                <button class="open-modal">
+                                    View All Flowers
+                                </button>
+                            </div>
 
-                        </div> <!-- close .plants-modal -->
+                            <div
+                                class="plants-modal"
+                                role="dialog"
+                                aria-modal="true"
+                                aria-hidden="true"
+                            >
+                                <button
+                                    tabindex="-1"
+                                    aria-label="close"
+                                    class="close-modal-button focusable"
+                                >
+                                    <span aria-hidden="true" class="left-arrow"
+                                        >&#8678;</span
+                                    >
+                                    BACK
+                                </button>
 
-                        <div class='plant-text bottom left right'>
-                            <h2 class='plant-title'>Perennials & Shrubs</h2>
-                            <p class='plant-type-description'>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Tempora distinctio ea quasi
-                                quam reiciendis nostrum, dolorum laudantium a dicta!
-                            </p>
-                            <button class='open-modal'>View All Perennials & Shrubs</button>
-                        </div>
-                        <div class='plant-text bottom left'>
-                            <h2 class='plant-title'>Vegetables</h2>
-                            <p class='plant-type-description'>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Tempora distinctio ea quasi
-                                quam reiciendis nostrum, dolorum laudantium a dicta ipsa nisi in praesentium vero
-                                provident soluta corporis dolorem voluptate laboriosam!
-                                <!--
+                                <div class="modal-grid"></div>
+                            </div>
+                            <!-- close .plants-modal -->
+
+                            <div class="plant-text bottom left right">
+                                <h2 class="plant-title">Perennials & Shrubs</h2>
+                                <p class="plant-type-description">
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipisicing elit. Tempora distinctio ea
+                                    quasi quam reiciendis nostrum, dolorum
+                                    laudantium a dicta!
+                                </p>
+                                <button class="open-modal">
+                                    View All Perennials & Shrubs
+                                </button>
+                            </div>
+                            <div class="plant-text bottom left">
+                                <h2 class="plant-title">Vegetables</h2>
+                                <p class="plant-type-description">
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipisicing elit. Tempora distinctio ea
+                                    quasi quam reiciendis nostrum, dolorum
+                                    laudantium a dicta ipsa nisi in praesentium
+                                    vero provident soluta corporis dolorem
+                                    voluptate laboriosam!
+                                    <!--
                                 <button class='open-modal-alternate'>View all vegetables <span aria-hidden='true' class='greater-than-symbol'>&gt;</span></button>
-                                -->
-                            </p>
-                            <button class='open-modal'>View All Vegetables</button>
-                        </div>
-                        <div class='plant-text top right'>
-                            <h2 class='plant-title'>Herbs</h2>
-                            <p class='plant-type-description'>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Tempora distinctio ea quasi
-                                quam reiciendis nostrum, dolorum laudantium a dicta ipsa nisi in praesentium vero
-                                provident soluta corporis dolorem voluptate laboriosam!</p>
-                            <p class='plant-type-description'>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <button class='open-modal'>View All Herbs</button>
-                        </div>
-                        <div class='plant-text top left right'>
-                            <h2 class='plant-title'>Bulk Seeds</h2>
-                            <p class='plant-type-description'>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Tempora distinctio ea quasi
-                                quam reiciendis nostrum, dolorum laudantium a dicta ipsa nisi in praesentium vero
-                                provident soluta corporis dolorem voluptate laboriosam!</p>
-                            <button class='open-modal'>View All Bulk Seeds</button>
-                        </div>
-                        <div class='plant-text top left no-pseudo-elem'>
-                            <h2 class='plant-title'>Hanging Baskets</h2>
-                            <p class='plant-type-description'>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Tempora distinctio ea quasi
-                                quam reiciendis nostrum, dolorum laudantium a dicta ipsa nisi in praesentium vero
-                                provident soluta corporis dolorem voluptate laboriosam!</p>
-                            <p class='plant-type-description'>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Tempora distinctio ea quasi
-                                quam reiciendis nostrum, dolorum laudantium a dicta ipsa nisi in praesentium vero
-                                provident soluta corporis dolorem voluptate laboriosam!</p>
-                            <button class='open-modal'>View All Hanging Baskets</button>
-                        </div>
-                    </section> <!-- close .plants-content -->
-
-
-                    <div class='plant-border'>
-                        <img class='plant' src='assets/images/cropped/prettyPlant.jpg' alt=''>
-                        <img class='plant' src='assets/images/cropped/prettyPlant2.jpg' alt=''>
-                        <img class='plant' src='assets/images/cropped/herbs.jpg' alt=''>
-                        <img class='plant' src='assets/images/cropped/prettyPlant3.jpg' alt=''>
-                    </div> <!-- close .plant-border-->
-
-                </section> <!-- close .plants -->
-
-
-                <span id='gifts' class='nav-offset'></span>
-                <section class='gifts'>
-                    <h1 class='section-header'>Farm Finds</h1>
-                    <div class='gifts-content'>
-                        <figure class='gifts-figure'>
-                            <img class='gifts-img' src='assets/images/cropped/gifts.jpg' alt='Collage of gifts and farm finds'>
-                        </figure>
-                        <div class='gifts-text-container'>
-                            <p class='gifts-text'>Looking to add a rustic charm to your place? Looking for that perfect
-                                vintage farmhouse find? Stop by to see what we have. It would be impossible to list
-                                everything here on the website as most items are a one off, and these items come and go
-                                rather quickly.
-                            </p>
-                        </div>
-                    </div> <!-- close .gifts-content-->
-                </section> <!-- close .gifts -->
-
-            </section> <!-- close .products -->
-
-
-            <span id='contact' class='nav-offset'></span>
-            <section class='contact'>
-                <h1 class='section-header'>Get In Touch</h1>
-                <div class='contact-content'>
-                    <div class='contact-info'>
-                        <!-- .contact-method-wrapper contains social media/contact icons and info -->
-                        <div class='contact-method-wrapper'>
-                            <div class='icon-wrapper'>
-                                <a href='tel:2176520112' aria-label='217.652.0112'><i class='icon fas fa-phone-volume'
-                                        aria-hidden='true'></i></a>
+                                --></p>
+                                <button class="open-modal">
+                                    View All Vegetables
+                                </button>
                             </div>
-                            <a class='info info-link' aria-label='217.652.0112' href='tel:2176520112'>217-652-0112</a>
-                        </div>
-
-                        <div class='contact-method-wrapper'>
-                            <div class='icon-wrapper'>
-                                <div><i aria-hidden='true' class='icon fas fa-at'></i></div>
+                            <div class="plant-text top right">
+                                <h2 class="plant-title">Herbs</h2>
+                                <p class="plant-type-description">
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipisicing elit. Tempora distinctio ea
+                                    quasi quam reiciendis nostrum, dolorum
+                                    laudantium a dicta ipsa nisi in praesentium
+                                    vero provident soluta corporis dolorem
+                                    voluptate laboriosam!
+                                </p>
+                                <p class="plant-type-description">
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipisicing elit.
+                                </p>
+                                <button class="open-modal">
+                                    View All Herbs
+                                </button>
                             </div>
-                            <div aria-label='Bloomfield Greenhouse email address' class='info'>cubloom4@gmail.com</div>
-                        </div>
-
-                        <div class='contact-method-wrapper'>
-                            <div class='icon-wrapper'>
-                                <a href='https://www.facebook.com/Bloomfield-Greenhouse-1575487092723335' aria-label='Bloomfield Greenhouse Facebook page'
-                                    target='_blank' rel='noopener'><i aria-hidden='true' class='icon fab fa-facebook'></i></a>
+                            <div class="plant-text top left right">
+                                <h2 class="plant-title">Bulk Seeds</h2>
+                                <p class="plant-type-description">
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipisicing elit. Tempora distinctio ea
+                                    quasi quam reiciendis nostrum, dolorum
+                                    laudantium a dicta ipsa nisi in praesentium
+                                    vero provident soluta corporis dolorem
+                                    voluptate laboriosam!
+                                </p>
+                                <button class="open-modal">
+                                    View All Bulk Seeds
+                                </button>
                             </div>
-                            <a class='info info-link' href='https://www.facebook.com/Bloomfield-Greenhouse-1575487092723335'
-                                aria-label='Bloomfield Greenhouse Facebook page' target='_blank' rel='noopener'>Follow
-                                Us</a>
+                            <div class="plant-text top left no-pseudo-elem">
+                                <h2 class="plant-title">Hanging Baskets</h2>
+                                <p class="plant-type-description">
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipisicing elit. Tempora distinctio ea
+                                    quasi quam reiciendis nostrum, dolorum
+                                    laudantium a dicta ipsa nisi in praesentium
+                                    vero provident soluta corporis dolorem
+                                    voluptate laboriosam!
+                                </p>
+                                <p class="plant-type-description">
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipisicing elit. Tempora distinctio ea
+                                    quasi quam reiciendis nostrum, dolorum
+                                    laudantium a dicta ipsa nisi in praesentium
+                                    vero provident soluta corporis dolorem
+                                    voluptate laboriosam!
+                                </p>
+                                <button class="open-modal">
+                                    View All Hanging Baskets
+                                </button>
+                            </div>
+                        </section>
+                        <!-- close .plants-content -->
+
+                        <div class="plant-border">
+                            <img
+                                class="plant"
+                                src="assets/images/cropped/prettyPlant.jpg"
+                                alt=""
+                            />
+                            <img
+                                class="plant"
+                                src="assets/images/cropped/prettyPlant2.jpg"
+                                alt=""
+                            />
+                            <img
+                                class="plant"
+                                src="assets/images/cropped/herbs.jpg"
+                                alt=""
+                            />
+                            <img
+                                class="plant"
+                                src="assets/images/cropped/prettyPlant3.jpg"
+                                alt=""
+                            />
                         </div>
-                    </div> <!-- close .contact-info -->
+                        <!-- close .plant-border-->
+                    </section>
+                    <!-- close .plants -->
 
-                    <div class='map-outer-wrapper'>
-
-                        <!-- an extra div wrapper so the map does not have to be 100 width -->
-                        <div class='map-inner-wrapper'>
-                            <h4 class='find'>Find Us</h4>
-
-                            <!-- .contact-map is needed to make the iframe responsive-->
-                            <div class='contact-map'>
-                                <!-- google map -->
-                                <iframe title='Google map' src="https://maps.google.com/maps?q=16350%20Old%20Rte%2054%20New%20Berlin%20Il%2062670&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
-                            </div> <!-- close .contact-map -->
+                    <span id="gifts" class="nav-offset"></span>
+                    <section class="gifts">
+                        <h1 class="section-header">Farm Finds</h1>
+                        <div class="gifts-content">
+                            <figure class="gifts-figure">
+                                <img
+                                    class="gifts-img"
+                                    src="assets/images/cropped/gifts.jpg"
+                                    alt="Collage of gifts and farm finds"
+                                />
+                            </figure>
+                            <div class="gifts-text-container">
+                                <p class="gifts-text">
+                                    Looking to add a rustic charm to your place?
+                                    Looking for that perfect vintage farmhouse
+                                    find? Stop by to see what we have. It would
+                                    be impossible to list everything here on the
+                                    website as most items are a one off, and
+                                    these items come and go rather quickly.
+                                </p>
+                            </div>
                         </div>
+                        <!-- close .gifts-content-->
+                    </section>
+                    <!-- close .gifts -->
+                </section>
+                <!-- close .products -->
 
-                    </div> <!-- close .map-outer-wrapper -->
+                <span id="contact" class="nav-offset"></span>
+                <section class="contact">
+                    <h1 class="section-header">Get In Touch</h1>
+                    <div class="contact-content">
+                        <div class="contact-info">
+                            <!-- .contact-method-wrapper contains social media/contact icons and info -->
+                            <div class="contact-method-wrapper">
+                                <div class="icon-wrapper">
+                                    <a
+                                        href="tel:2176520112"
+                                        aria-label="217.652.0112"
+                                        ><i
+                                            class="icon fas fa-phone-volume"
+                                            aria-hidden="true"
+                                        ></i
+                                    ></a>
+                                </div>
+                                <a
+                                    class="info info-link"
+                                    aria-label="217.652.0112"
+                                    href="tel:2176520112"
+                                    >217-652-0112</a
+                                >
+                            </div>
 
-                </div> <!-- close .contact-content-->
-            </section> <!-- close .contact -->
+                            <div class="contact-method-wrapper">
+                                <div class="icon-wrapper">
+                                    <div>
+                                        <i
+                                            aria-hidden="true"
+                                            class="icon fas fa-at"
+                                        ></i>
+                                    </div>
+                                </div>
+                                <div
+                                    aria-label="Bloomfield Greenhouse email address"
+                                    class="info"
+                                >
+                                    cubloom4@gmail.com
+                                </div>
+                            </div>
 
-        </main>
+                            <div class="contact-method-wrapper">
+                                <div class="icon-wrapper">
+                                    <a
+                                        href="https://www.facebook.com/Bloomfield-Greenhouse-1575487092723335"
+                                        aria-label="Bloomfield Greenhouse Facebook page"
+                                        target="_blank"
+                                        rel="noopener"
+                                        ><i
+                                            aria-hidden="true"
+                                            class="icon fab fa-facebook"
+                                        ></i
+                                    ></a>
+                                </div>
+                                <a
+                                    class="info info-link"
+                                    href="https://www.facebook.com/Bloomfield-Greenhouse-1575487092723335"
+                                    aria-label="Bloomfield Greenhouse Facebook page"
+                                    target="_blank"
+                                    rel="noopener"
+                                    >Follow Us</a
+                                >
+                            </div>
+                        </div>
+                        <!-- close .contact-info -->
 
-        <footer>
-            <p>Copyright &copy; <span class="year"></span> <a class='tangoecho' href='https://msksfo.github.io/TangoEchoDesign/'
-                    target='_blank' rel='noopener'>TangoEcho Design</a>. All Rights Reserved</p>
-        </footer>
+                        <div class="map-outer-wrapper">
+                            <!-- an extra div wrapper so the map does not have to be 100 width -->
+                            <div class="map-inner-wrapper">
+                                <h4 class="find">Find Us</h4>
 
-    </div> <!-- close .container -->
+                                <!-- .contact-map is needed to make the iframe responsive-->
+                                <div class="contact-map">
+                                    <!-- google map -->
+                                    <iframe
+                                        title="Google map"
+                                        src="https://maps.google.com/maps?q=16350%20Old%20Rte%2054%20New%20Berlin%20Il%2062670&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                    ></iframe>
+                                </div>
+                                <!-- close .contact-map -->
+                            </div>
+                        </div>
+                        <!-- close .map-outer-wrapper -->
+                    </div>
+                    <!-- close .contact-content-->
+                </section>
+                <!-- close .contact -->
+            </main>
 
-    <script src='js/plantData.js'></script>
-    <script src='js/main.js'></script>
-</body>
+            <footer>
+                <p>
+                    Copyright &copy; <span class="year"></span>
+                    <a
+                        class="tangoecho"
+                        href="https://msksfo.github.io/TangoEchoDesign/"
+                        target="_blank"
+                        rel="noopener"
+                        >TangoEcho Design</a
+                    >. All Rights Reserved
+                </p>
+            </footer>
+        </div>
+        <!-- close .container -->
 
+        <script src="js/plantData.js"></script>
+        <script src="js/main.js"></script>
+    </body>
 </html>

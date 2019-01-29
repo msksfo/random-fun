@@ -1,55 +1,121 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="description"
+            content="Bloomfield Greenhouse is a family owned and operated greenhouse in New Berlin, Illinois"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Bloomfield Greenhouse</title>
 
-<head>
-    <meta charset='utf-8'>
-    <meta name='description' content='Bloomfield Greenhouse is a family owned and operated greenhouse in New Berlin, Illinois'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>Bloomfield Greenhouse</title>
+        <!-- favicon -->
+        <link
+            rel="apple-touch-icon"
+            sizes="152x152"
+            href="favicon/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="favicon/site.webmanifest" />
+        <link
+            rel="mask-icon"
+            href="favicon/safari-pinned-tab.svg"
+            color="#5bbad5"
+        />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
 
-    <!-- google font for Logo, exact letters specified for performance improvement-->
-    <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative&text=BlomfieldGrnhus" rel="stylesheet">
+        <!-- google font for Logo, exact letters specified for performance improvement-->
+        <link
+            href="https://fonts.googleapis.com/css?family=Cinzel+Decorative&text=BlomfieldGrnhus"
+            rel="stylesheet"
+        />
 
-    <!-- google font for text-->
-    <link href="https://fonts.googleapis.com/css?family=Thasadith" rel="stylesheet">
+        <!-- google font for Logo, exact letters specified for performance improvement-->
+        <link
+            href="https://fonts.googleapis.com/css?family=Cinzel+Decorative&text=BlomfieldGrnhus"
+            rel="stylesheet"
+        />
 
-    <link rel='stylesheet' href='css/landing.css'>
-</head>
+        <!-- google font for text-->
+        <link
+            href="https://fonts.googleapis.com/css?family=Thasadith"
+            rel="stylesheet"
+        />
 
-<body>
-    <div class='wrapper'>
+        <link rel="stylesheet" href="css/landing.css" />
+    </head>
 
-        <div id='js-video-container' class='video-container-image video-container-video'>
-            <video id='js-daisyVideo' preload='auto' autoplay loop muted>
-                <source src="assets/video/daisy.mp4" type='video/mp4'>
-                <p>Your browser does not support HTML5 video</p>
-            </video>
-        </div> <!-- close .video- container -->
+    <body>
+        <div class="wrapper">
+            <div
+                id="js-video-container"
+                class="video-container-image video-container-video"
+            >
+                <video id="js-daisyVideo" preload="auto" autoplay loop muted>
+                    <source src="assets/video/daisy.mp4" type="video/mp4" />
+                    <p>Your browser does not support HTML5 video</p>
+                </video>
+            </div>
+            <!-- close .video- container -->
 
-        <div class='overlay'>
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h1>Bloomfield Greenhouse</h1>
+                    <div class="opening-hours">
+                        <p>
+                            Welcome to Bloomfield Greenhouse! We are open
+                            annually from March to June ~ Please
+                            <a
+                                class="openingHours-link"
+                                aria-label="217.652.0112"
+                                href="tel:2176520112"
+                                >call</a
+                            >
+                            for exact dates
+                        </p>
+                        <p>
+                            Monday - Saturday: 9 to 6
+                            <span aria-hidden="true">&#127807;</span> Sunday: 10
+                            to 4
+                        </p>
+                    </div>
 
-            <div class='overlay-content'>
-                <h1>Bloomfield Greenhouse</h1>
-                <div class='opening-hours'>
-                    <p>Welcome to Bloomfield Greenhouse! We are open annually from March to June ~ Please <a class='openingHours-link'
-                            aria-label='217.652.0112' href='tel:2176520112'>call</a> for exact dates</p>
-                    <p>Monday - Saturday: 9 to 6 <span aria-hidden='true'>&#127807;</span> Sunday: 10 to 4</p>
+                    <div class="landing-options">
+                        <a href="index.html" class="button no-border">Enter</a>
+                        <a
+                            class="button no-border"
+                            aria-label="217.652.0112"
+                            href="tel:2176520112"
+                            >Call</a
+                        >
+                        <a
+                            href="https://www.google.com/maps/place/16350+Old+Rte+54,+New+Berlin,+Illinois+62670/"
+                            target="_blank"
+                            rel="noopener"
+                            class="button"
+                            >Find Us</a
+                        >
+                    </div>
+                    <!-- close .landing-options -->
                 </div>
+                <!-- close .overlay-content -->
+            </div>
+            <!-- close .overlay -->
+        </div>
+        <!-- close .wrapper -->
 
-                <div class='landing-options'>
-                    <a href='index.html' class='button no-border'>Enter</a>
-                    <a class='button no-border' aria-label='217.652.0112' href='tel:2176520112'>Call</a>
-                    <a href='https://www.google.com/maps/place/16350+Old+Rte+54,+New+Berlin,+Illinois+62670/' target='_blank'
-                        rel='noopener' class='button'>Find Us</a>
-                </div> <!-- close .landing-options -->
-
-            </div> <!-- close .overlay-content -->
-
-        </div> <!-- close .overlay -->
-
-    </div> <!-- close .wrapper -->
-
-    <script src='js/landing.js'></script>
-</body>
-
+        <script src="js/landing.js"></script>
+    </body>
 </html>
