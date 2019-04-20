@@ -1,6 +1,10 @@
 const secondHand = document.querySelector('.second-hand');
 const minuteHand = document.querySelector('.minute-hand');
 const hourHand = document.querySelector('.hour-hand');
+const date = document.querySelector('.date');
+
+const today = new Date();
+date.textContent = today.getDate();
 
 function updateTime() {
     const now = new Date();

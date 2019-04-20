@@ -172,3 +172,43 @@ body {
     background-color: white;
     clip-path: polygon(15% 50%, 70% 20%, 90% 50%, 90% 50%, 70% 80%, 15% 50%);
 }
+
+/* brand */
+.omega {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    top: 15%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 12px;
+}
+
+.speedmaster {
+    font-family: cursive;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translateX(-50%);
+    color: var(--red);
+    font-size: 12px;
+}
+
+.date {
+    height: 20px;
+    width: 20px;
+    background-color: black;
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 85%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
