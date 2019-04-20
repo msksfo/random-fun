@@ -1,0 +1,174 @@
+:root {
+    --bandGrey: #646464;
+    --bezelGrey: #6a6968;
+    --innerBorderGrey: #4b4b4b;
+
+    --roseGold: #e5b9a6;
+    --red: #bc0d2c;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    height: 600px;
+    width: 300px;
+}
+
+.strap-container {
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    height: 150px;
+}
+
+.strap.top,
+.strap.bottom {
+    height: 150px;
+    width: 100px;
+    background-color: var(--bandGrey);
+    position: relative;
+}
+
+/* the white stitching on the watch strap */
+.stitching {
+    position: absolute;
+    width: 80px;
+    height: 100px;
+    top: 50px;
+    left: 10px;
+    border-left: 2px dashed rgba(225, 225, 225, 0.75);
+    border-right: 2px dashed rgba(225, 225, 225, 0.75);
+}
+
+.stitching.top {
+    top: 0;
+}
+
+/* bezel */
+.face.outer {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    background-color: var(--bezelGrey);
+    border: 4px solid var(--roseGold);
+    position: relative;
+}
+
+/* watch face */
+.face.inner {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    height: 260px;
+    width: 260px;
+    border-radius: 50%;
+    border: 8px solid var(--innerBorderGrey);
+    background: url('../images/meteorite.jpg');
+    background-size: cover;
+}
+
+/* the 'pin' holding the three hands together */
+.dead-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 2px;
+    width: 2px;
+    background-color: black;
+    z-index: 2;
+}
+
+/* hour, minute, second hands */
+.minute-hand {
+    position: absolute;
+    top: calc(50% - 5px);
+    width: 45%;
+    left: 5%;
+    height: 10px;
+    background-color: var(--roseGold);
+    transform: rotate(90deg);
+    transform-origin: 100%;
+    clip-path: polygon(13% 0%, 100% 0%, 100% 100%, 13% 100%, 0% 50%);
+    display: flex;
+    align-items: center;
+    z-index: 1;
+}
+
+.minute-hand-center {
+    width: 80%;
+    height: 3px;
+    background-color: white;
+    position: relative;
+    left: 13%;
+}
+
+.hour-hand {
+    position: absolute;
+    top: calc(50% - 5px);
+    left: 17%;
+    width: 33%;
+    height: 10px;
+    background-color: var(--roseGold);
+    transform: rotate(90deg);
+    transform-origin: 100%;
+    clip-path: polygon(13% 0%, 100% 0%, 100% 100%, 13% 100%, 0% 50%);
+    display: flex;
+    align-items: center;
+}
+
+.hour-hand-center {
+    width: 80%;
+    height: 3px;
+    background-color: white;
+    position: relative;
+    left: 13%;
+}
+
+.second-hand {
+    position: absolute;
+    top: calc(50% - 5px);
+    width: 62%;
+    height: 10px;
+    background-color: var(--roseGold);
+    transform: rotate(90deg);
+    transform-origin: 80.5%;
+    clip-path: polygon(
+        0% 40%,
+        8% 40%,
+        22% 0%,
+        30% 30%,
+        100% 0%,
+        100% 100%,
+        30% 70%,
+        22% 100%,
+        8% 60%,
+        0% 60%
+    );
+}
+
+.second-hand-pointer {
+    position: absolute;
+    width: 8%;
+    height: 10px;
+    background-color: var(--red);
+}
+
+.second-hand-center {
+    position: absolute;
+    width: 22%;
+    height: 10px;
+    left: 8%;
+    background-color: white;
+    clip-path: polygon(15% 50%, 70% 20%, 90% 50%, 90% 50%, 70% 80%, 15% 50%);
+}
