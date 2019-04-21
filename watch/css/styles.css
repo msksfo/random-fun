@@ -86,7 +86,7 @@ body {
     height: 2px;
     width: 2px;
     background-color: black;
-    z-index: 2;
+    z-index: 10;
 }
 
 /* hour, minute, second hands */
@@ -100,8 +100,6 @@ body {
     transform: rotate(90deg);
     transform-origin: 100%;
     clip-path: polygon(13% 0%, 100% 0%, 100% 100%, 13% 100%, 0% 50%);
-    display: flex;
-    align-items: center;
     z-index: 1;
 }
 
@@ -109,8 +107,10 @@ body {
     width: 80%;
     height: 3px;
     background-color: white;
-    position: relative;
+    position: absolute;
     left: 13%;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .hour-hand {
@@ -123,19 +123,20 @@ body {
     transform: rotate(90deg);
     transform-origin: 100%;
     clip-path: polygon(13% 0%, 100% 0%, 100% 100%, 13% 100%, 0% 50%);
-    display: flex;
-    align-items: center;
 }
 
 .hour-hand-center {
     width: 80%;
     height: 3px;
     background-color: white;
-    position: relative;
+    position: absolute;
     left: 13%;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .second-hand {
+    z-index: 5;
     position: absolute;
     top: calc(50% - 5px);
     width: 62%;
@@ -206,9 +207,108 @@ body {
     color: white;
     position: absolute;
     left: 50%;
-    top: 85%;
+    top: 83%;
     transform: translateX(-50%);
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* indices */
+.indice {
+    background-color: white;
+    border: 2px solid var(--roseGold);
+    height: 9px;
+}
+
+.large-indice {
+    width: 27px;
+}
+
+.small-indice {
+    width: 14px;
+}
+
+.twelve {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) rotate(90deg);
+    top: 5%;
+}
+
+.one {
+    position: absolute;
+    left: 66%;
+    top: 11%;
+    transform: rotate(120deg);
+}
+
+.two {
+    position: absolute;
+    left: 198.516px;
+    top: 64.438px;
+    transform: rotate(150deg);
+}
+
+.nine {
+    position: absolute;
+    top: 50%;
+    left: 1%;
+    transform: translateY(-50%);
+}
+
+.ten {
+    position: absolute;
+    top: 64.438px;
+    left: 18.484px;
+    transform: rotate(30deg);
+}
+
+.eleven {
+    position: absolute;
+    top: 26.828px;
+    left: 56.969px;
+    transform: rotate(60deg);
+}
+
+.three {
+    position: absolute;
+    top: 50%;
+    left: 93%;
+    transform: translateY(-50%);
+}
+
+.four {
+    position: absolute;
+    top: 70%;
+    left: 81%;
+    transform: rotate(210deg);
+}
+
+.five {
+    position: absolute;
+    top: 85%;
+    left: 66%;
+    transform: rotate(240deg);
+}
+
+.six {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) rotate(90deg);
+    top: 94%;
+}
+
+.seven {
+    position: absolute;
+    left: 55.969px;
+    transform: rotate(300deg);
+    top: 207.391px;
+}
+
+.eight {
+    position: absolute;
+    left: 9%;
+    transform: rotate(330deg) translateY(-50%);
+    top: 71%;
 }
