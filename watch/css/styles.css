@@ -312,3 +312,165 @@ body {
     transform: rotate(330deg) translateY(-50%);
     top: 71%;
 }
+
+/* swiss made, on either side of 6:00 indice */
+
+.swiss-made {
+    position: absolute;
+    top: 93%;
+
+    font-size: 6px;
+    color: white;
+    text-transform: uppercase;
+}
+.swiss {
+    left: 39%;
+}
+
+.made {
+    left: 54%;
+}
+
+/* chronos */
+.chrono {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    box-shadow: 1px 2px #5e5d5d;
+
+    border: 7px solid #6d6967;
+}
+
+.chrono-1 {
+    left: 8%;
+}
+
+.chrono-2 {
+    left: 59.22%;
+}
+
+.chrono-60 {
+    color: white;
+    font-weight: 200;
+    font-size: 13px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.chrono-20 {
+    color: white;
+    font-weight: 200;
+    font-size: 13px;
+    position: absolute;
+    left: 82%;
+    transform: translateX(-50%);
+    top: 55%;
+}
+
+.chrono-40 {
+    color: white;
+    font-weight: 200;
+    font-size: 13px;
+    position: absolute;
+    left: 8%;
+    top: 55%;
+}
+
+.chrono-12 {
+    color: white;
+    font-weight: 200;
+    font-size: 13px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.chrono-9 {
+    color: white;
+    font-weight: 200;
+    font-size: 13px;
+    position: absolute;
+    left: 3%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.chrono-3 {
+    color: white;
+    font-weight: 200;
+    font-size: 13px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 86%;
+}
+
+.chrono-6 {
+    color: white;
+    font-weight: 200;
+    font-size: 13px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 78%;
+}
+
+.chrono-center {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--roseGold);
+    z-index: 2;
+}
+
+.chrono-center-pin {
+    height: 2px;
+    width: 2px;
+    z-index: 3;
+    background-color: black;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.chrono-hand {
+    position: absolute;
+    top: 33%;
+    left: 10%;
+    transform: rotate(36deg);
+    background-color: var(--roseGold);
+    height: 4px;
+    width: 40%;
+    clip-path: polygon(13% 0%, 100% 0%, 100% 100%, 13% 100%, 0% 50%);
+}
+
+.chrono-hour {
+    position: absolute;
+    top: 33%;
+    left: 10%;
+    transform: rotate(36deg);
+    background-color: var(--roseGold);
+    height: 4px;
+    width: 40%;
+    clip-path: polygon(13% 0%, 100% 0%, 100% 100%, 13% 100%, 0% 50%);
+}
+
+.chrono-minute {
+    position: absolute;
+    top: 33%;
+    left: 50%;
+    transform: translateX(-50%) rotate(90deg);
+    background-color: var(--roseGold);
+    height: 4px;
+    width: 40%;
+    clip-path: polygon(13% 0%, 100% 0%, 100% 100%, 13% 100%, 0% 50%);
+}
