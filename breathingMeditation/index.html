@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Just Breathe</title>
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <header>
+            <div>
+                <h1 class="app-title">Just Breathe</h1>
+                <a href="#about">About</a>
+            </div>
+
+            <p>
+                <label for="breath-duration">Adjust breath duration to </label>
+                <input
+                    placeholder="seconds"
+                    type="number"
+                    min="1"
+                    name="breath-duration"
+                    id="breath-duration"
+                />
+                <button id="change-breath-duration-button">Change</button>
+            </p>
+        </header>
+
+        <main class="wrapper">
+            <div class="expanding"></div>
+        </main>
+
+        <section id="about">
+            <p class="about-text bordered">
+                I built this small application as a way to help me focus during
+                this unsettling time of the COVID-19 pandemic. I was feeling
+                overwhelmed with everything going on in the world, and having
+                trouble concentrating on react and vue and algorithms and
+                accessibility, performance, build tools, package managers,
+                testing frameworks, and the gazillion other things necessary to
+                learn in order to become a front-end developer in 2020. So I
+                decided to build something to help people intentionally focus on
+                their breath. The idea is that when you are focused on your
+                breath, you are slowing down and becoming grounded in the
+                present moment.
+            </p>
+            <p class="about-text">
+                Inhale as the flower expands. Exhale as it contracts. Just...
+                breathe.
+            </p>
+        </section>
+
+        <footer>
+            Copyright &copy; <span id="year"></span>&nbsp;
+            <a href="https://tangoechodesign.com">tangoechodesign</a>. All
+            Rights Reserved
+        </footer>
+
+        <script src="js/main.js"></script>
+    </body>
+</html>
+
+<!-- TODO: 
+    1. add advanced options, where user could specify separate breath in/out timings
+-->
